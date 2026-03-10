@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>⚽ Brasileirão Agent 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090f;--bg2:#0c1118;--bg3:#0a0d14;--bg4:#080c12;
+  --border:#1a2035;--border2:#0f1520;
+  --text:#cbd5e1;--text2:#94a3b8;--text3:#64748b;--text4:#475569;
+  --green:#22c55e;--yellow:#eab308;--red:#ef4444;--blue:#3b82f6;
+  --orange:#f97316;--purple:#8b5cf6;--gold:#f59e0b;--betano:#f5a623;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono','Fira Code',monospace;min-height:100vh}
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-thumb{background:#1e293b;border-radius:2px}
+::-webkit-scrollbar-track{background:var(--bg)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.live{animation:blink 2s infinite}
+.page-section{display:none}
+.page-section.active{display:block;animation:fadeup .25s ease}
+.row:hover{background:#0d1525!important}
+.jrow:hover{background:#0d1422!important;border-color:#334155!important}
+#nav{background:var(--bg3);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:99}
+#nav-inner{max-width:1280px;margin:0 auto;padding:0 20px}
+#nav-top{display:flex;align-items:center;justify-content:space-between;height:54px;gap:12px}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;color:#f8fafc}
+.logo span{color:var(--green)}
+.badge{font-size:9px;letter-spacing:2px;padding:2px 8px;border-radius:3px}
+.badge-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:var(--green)}
+.badge-orange{background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--orange)}
+#ts{font-size:10px;color:var(--text4);white-space:nowrap}
+#tabs{display:flex;gap:0;overflow-x:auto}
+#tabs::-webkit-scrollbar{height:0}
+.tab{background:transparent;border:none;cursor:pointer;padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:1.2px;transition:all .15s;white-space:nowrap;font-family:'DM Mono',monospace;border-bottom:2px solid transparent;color:var(--text4)}
+.tab:hover{color:var(--text2)}
+.tab.active{color:var(--green);border-bottom-color:var(--green)}
+#main{max-width:1280px;margin:0 auto;padding:20px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+.kpi-label{font-size:8px;color:var(--text4);letter-spacing:2px;margin-bottom:6px;font-weight:700}
+.kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;line-height:1}
+.kpi-sub{font-size:9px;color:var(--text3);margin-top:4px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.card-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.card-title{font-size:12px;font-weight:700;letter-spacing:.5px;color:#e2e8f0}
+.bet-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--border2);flex-wrap:wrap}
+.bet-row:last-child{border-bottom:none}
+.result-badge{min-width:76px;padding:4px 10px;border-radius:5px;text-align:center;font-size:10px;font-weight:700;border:1px solid}
+.result-pending{background:rgba(71,85,105,.12);border-color:var(--border);color:var(--text4)}
+.result-green{background:rgba(34,197,94,.12);border-color:var(--green);color:var(--green)}
+.result-red{background:rgba(239,68,68,.12);border-color:var(--red);color:var(--red)}
+.forma-dot{width:15px;height:15px;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:#000}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:9px 12px;color:var(--text4);font-size:9px;font-weight:700;letter-spacing:2px}
+td{padding:10px 12px}
+tbody tr{border-bottom:1px solid var(--border2);transition:background .1s}
+tbody tr:hover{background:#0d1525}
+.prog{height:3px;background:#1e293b;border-radius:2px;margin:5px 0}
+.prog-fill{height:100%;border-radius:2px;transition:width .6s ease}
+#bilhete-card{width:100%;max-width:420px;background:linear-gradient(160deg,#11001e,#1c0038);border:1px solid #2d1f4e;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7)}
+.bet-header{background:linear-gradient(135deg,#180030,#2a0058,#180030);padding:18px 22px 14px;border-bottom:3px solid var(--betano)}
+.betano-logo{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:#fff;line-height:1}
+.betano-logo span{color:var(--betano)}
+.bet-sel-row{padding:13px 22px;border-bottom:1px solid rgba(255,255,255,.05)}
+.bet-sel-row:last-of-type{border-bottom:none}
+.bet-odd-total{padding:12px 22px;background:rgba(245,166,35,.06);border-top:1px solid rgba(245,166,35,.12);border-bottom:1px solid rgba(245,166,35,.12);display:flex;justify-content:space-between;align-items:center}
+.bet-valor-section{padding:16px 22px}
+.val-btns{display:flex;gap:5px;margin-bottom:10px}
+.val-btn{flex:1;padding:7px 0;cursor:pointer;border-radius:5px;font-weight:700;font-size:11px;transition:all .12s;font-family:inherit;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);color:#666}
+.val-btn.active{background:var(--betano);border-color:var(--betano);color:#000}
+.retorno-box{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.18);border-radius:9px;padding:13px 15px}
+.ret-row{display:flex;justify-content:space-between;margin-bottom:5px}
+.ret-total{border-top:1px solid rgba(34,197,94,.15);padding-top:9px;display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.jogo-row{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;transition:all .12s;margin-bottom:8px}
+.jogo-row:hover{background:#0d1422;border-color:#334155}
+.jogo-row.destaque{border-color:rgba(245,158,11,.3)}
+.status-badge{min-width:66px;padding:3px 7px;border-radius:3px;text-align:center;font-size:8px;font-weight:700;letter-spacing:1.5px}
+.alert-legal{background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:8px;padding:14px 16px;font-size:10px;color:var(--text3);line-height:1.9}
+.seq-row{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border2)}
+.seq-row:last-child{border-bottom:none}
+.seq-val{font-size:11px;font-weight:700;color:var(--gold);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);padding:3px 10px;border-radius:4px;white-space:nowrap;margin-left:12px}
+.hist-empty{text-align:center;padding:32px 20px;color:#334155;font-size:12px;border:1px dashed var(--border);border-radius:8px}
+.legenda{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:5px 10px}
+.leg-dot{width:7px;height:7px;border-radius:1px}
+.leg-txt{font-size:9px;color:var(--text3)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:16px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.two-col{display:grid;grid-template-columns:1fr 340px;gap:14px}
+@media(max-width:860px){.two-col{grid-template-columns:1fr}}
+.sidebar{display:flex;flex-direction:column;gap:12px}
+.bilhete-layout{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.bilhete-side{flex:1;min-width:240px}
+.top5-row{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--border2);transition:background .1s}
+.top5-row:hover{background:var(--bg3)}
+.top5-row:last-child{border-bottom:none}
+.acertos-box{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:16px 20px;margin-bottom:18px;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.rod-hist{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:12px}
+.rod-hist-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.rod-hist-footer{padding:9px 16px;background:var(--bg4);display:flex;justify-content:space-between;font-size:10px;color:var(--text4)}
+
+/* ── PERFORMANCE STYLES ── */
+.perf-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:20px}
+.perf-kpi{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;position:relative;overflow:hidden}
+.perf-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.perf-kpi.green::before{background:var(--green)}
+.perf-kpi.red::before{background:var(--red)}
+.perf-kpi.gold::before{background:var(--gold)}
+.perf-kpi.blue::before{background:var(--blue)}
+.perf-kpi.purple::before{background:var(--purple)}
+.perf-kpi-lbl{font-size:8px;color:var(--text4);letter-spacing:2px;margin-bottom:6px;font-weight:700}
+.perf-kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;line-height:1}
+.perf-kpi-sub{font-size:9px;color:var(--text3);margin-top:4px}
+
+/* CHART */
+.chart-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px}
+.chart-title{font-size:11px;font-weight:700;letter-spacing:.5px;color:#e2e8f0;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+#saldo-chart{width:100%;height:160px;position:relative}
+.chart-area{width:100%;height:130px;position:relative;overflow:visible}
+.chart-zero{position:absolute;left:0;right:0;border-top:1px dashed #1e293b}
+.chart-label{font-size:9px;color:var(--text4)}
+
+/* CALENDÁRIO */
+.cal-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px}
+.cal-title{font-size:11px;font-weight:700;letter-spacing:.5px;color:#e2e8f0;margin-bottom:14px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day-header{font-size:8px;color:var(--text4);text-align:center;padding:3px 0;letter-spacing:1px}
+.cal-day{min-height:52px;border-radius:5px;border:1px solid var(--border2);padding:4px 5px;font-size:8px;position:relative;background:var(--bg3)}
+.cal-day.empty{background:transparent;border-color:transparent}
+.cal-day.has-game{border-color:#1e3a5f;background:#0a1220;cursor:pointer}
+.cal-day.has-game:hover{border-color:#3b82f6}
+.cal-day.green-day{border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.05)}
+.cal-day.red-day{border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.05)}
+.cal-day.partial-day{border-color:rgba(234,179,8,.3);background:rgba(234,179,8,.05)}
+.cal-day-num{color:var(--text4);font-size:9px;margin-bottom:3px}
+.cal-dot{display:inline-block;width:5px;height:5px;border-radius:50%;margin:1px}
+
+/* APOSTAS LISTA PERFORMANCE */
+.ap-row{display:grid;grid-template-columns:2fr 1fr 60px 60px 80px 80px;gap:8px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border2);font-size:11px}
+.ap-row:last-child{border-bottom:none}
+.ap-row.header{font-size:8px;color:var(--text4);letter-spacing:1.5px;font-weight:700;padding:8px 14px;border-bottom:1px solid var(--border)}
+@media(max-width:700px){.ap-row{grid-template-columns:1fr 60px 80px}}
+
+/* ROI MERCADO */
+.roi-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border2)}
+.roi-row:last-child{border-bottom:none}
+.roi-bar-bg{flex:1;height:6px;background:#1e293b;border-radius:3px;overflow:hidden}
+.roi-bar-fill{height:100%;border-radius:3px;transition:width .8s ease}
+
+/* MESES SELECTOR */
+.mes-sel{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.mes-btn{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:4px 12px;font-size:10px;color:var(--text3);cursor:pointer;font-family:inherit;transition:all .12s;letter-spacing:.5px}
+.mes-btn.active{background:rgba(34,197,94,.1);border-color:var(--green);color:var(--green)}
+
+/* SVG CHART */
+svg.linechart{overflow:visible}
+</style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="nav-inner">
+    <div id="nav-top">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="logo">⚽ <span>BR</span>AGENT</span>
+        <span class="badge badge-green">SÉRIE A 2026</span>
+        <span class="badge badge-orange live">● R5 AO VIVO</span>
+      </div>
+      <div id="ts">Atualizado: 10/03/2026 17:00</div>
+    </div>
+    <div id="tabs">
+      <button class="tab active" data-tab="overview">◈ OVERVIEW</button>
+      <button class="tab" data-tab="bilhete">◉ BILHETE</button>
+      <button class="tab" data-tab="jogos">◷ JOGOS R5</button>
+      <button class="tab" data-tab="tabela">≡ TABELA</button>
+      <button class="tab" data-tab="historico">◔ HISTÓRICO</button>
+      <button class="tab" data-tab="performance">◎ PERFORMANCE</button>
+      <button class="tab" data-tab="stats">◈ STATS</button>
+    </div>
+  </div>
+</div>
+
+<div id="main">
+
+<!-- OVERVIEW -->
+<div id="sec-overview" class="page-section active">
+  <div class="kpi-grid">
+    <div class="kpi" style="border-top:2px solid var(--green)"><div class="kpi-label">RODADA</div><div class="kpi-val" style="color:var(--green)">5ª</div><div class="kpi-sub">Em andamento</div></div>
+    <div class="kpi" style="border-top:2px solid var(--blue)"><div class="kpi-label">APOSTAS BILHETE</div><div class="kpi-val" style="color:var(--blue)">4</div><div class="kpi-sub">Múltipla ativa</div></div>
+    <div class="kpi" style="border-top:2px solid var(--gold)"><div class="kpi-label">ODD TOTAL</div><div class="kpi-val" style="color:var(--gold)" id="kpi-odd">—</div><div class="kpi-sub" id="kpi-ret">calculando...</div></div>
+    <div class="kpi" style="border-top:2px solid var(--text4)"><div class="kpi-label">ACERTOS</div><div class="kpi-val" style="color:var(--text4)">—</div><div class="kpi-sub">Aguardando R5</div></div>
+    <div class="kpi" style="border-top:2px solid #a78bfa"><div class="kpi-label">LÍDER</div><div class="kpi-val" style="color:#a78bfa;font-size:16px">Palmeiras</div><div class="kpi-sub">10pts • +8 SG</div></div>
+    <div class="kpi" style="border-top:2px solid var(--red)"><div class="kpi-label">LANTERNA</div><div class="kpi-val" style="color:var(--red);font-size:16px">Vasco</div><div class="kpi-sub">1pt • -6 SG</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header"><span class="card-title">BILHETE ATIVO — RODADA 5</span><span style="font-size:9px;color:var(--orange);letter-spacing:1px" class="live">● EM ANDAMENTO</span></div>
+      <div id="ov-apostas"></div>
+      <div style="padding:10px 16px;background:var(--bg4);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:10px;color:var(--text4)">Múltipla • R$10 apostado</span>
+        <span style="font-size:14px;font-weight:700;color:var(--green)" id="ov-ret">Retorno: R$—</span>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="card"><div class="card-header"><span class="card-title">TOP 5</span></div><div id="top5-list"></div></div>
+      <div class="card" style="padding:12px 14px"><div style="font-size:9px;color:var(--text4);letter-spacing:2px;margin-bottom:10px">SEQUÊNCIAS QUENTES</div><div id="seq-mini"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BILHETE -->
+<div id="sec-bilhete" class="page-section">
+  <div class="bilhete-layout">
+    <div id="bilhete-card">
+      <div class="bet-header">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><div class="betano-logo"><span>bet</span>ano</div><div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:2px;margin-top:3px">SIMULAÇÃO DE BILHETE</div></div>
+          <div style="border:1px solid rgba(245,166,35,.3);border-radius:6px;padding:5px 10px;text-align:center"><div style="font-size:8px;color:var(--betano);letter-spacing:1px">BRASILEIRÃO 2026</div><div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:2px">RODADA 5</div></div>
+        </div>
+      </div>
+      <div id="bet-selecoes"></div>
+      <div class="bet-odd-total">
+        <span style="font-size:10px;color:rgba(255,255,255,.3)">MÚLTIPLA • 4 SELEÇÕES</span>
+        <div style="text-align:right"><div style="font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px">ODD TOTAL</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--betano)" id="odd-total-display">—</div></div>
+      </div>
+      <div class="bet-valor-section">
+        <div style="font-size:8px;color:rgba(255,255,255,.25);letter-spacing:2px;margin-bottom:7px">VALOR DA APOSTA (R$)</div>
+        <div class="val-btns" id="val-btns">
+          <button class="val-btn active" data-v="10">R$10</button>
+          <button class="val-btn" data-v="20">R$20</button>
+          <button class="val-btn" data-v="50">R$50</button>
+          <button class="val-btn" data-v="100">R$100</button>
+          <button class="val-btn" data-v="200">R$200</button>
+        </div>
+        <div class="retorno-box">
+          <div class="ret-row"><span style="font-size:10px;color:rgba(255,255,255,.35)">Apostado</span><span style="font-size:11px;color:#e2e8f0" id="b-apostado">R$ 10,00</span></div>
+          <div class="ret-row"><span style="font-size:10px;color:rgba(255,255,255,.35)">Lucro potencial</span><span style="font-size:11px;color:var(--green)" id="b-lucro">+ R$ —</span></div>
+          <div class="ret-total"><span style="font-size:11px;color:var(--betano);font-weight:700">RETORNO TOTAL</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--betano)" id="b-total">R$ —</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:8px;color:rgba(255,255,255,.15);text-align:center;line-height:1.7">⚠️ SIMULAÇÃO APENAS • JOGUE COM RESPONSABILIDADE • 18+</div>
+      </div>
+    </div>
+    <div class="bilhete-side">
+      <div style="font-size:9px;color:var(--text4);letter-spacing:2px;margin-bottom:12px">ANÁLISE DE CADA SELEÇÃO</div>
+      <div id="bilhete-analise"></div>
+      <div style="background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:8px;padding:12px 14px;margin-top:4px">
+        <div style="font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:6px">RESUMO</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11px;color:var(--text3)">Odd combinada</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--gold)" id="res-odd">—</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--text3)">R$100 vira</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--green)" id="res-ret">R$ —</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JOGOS -->
+<div id="sec-jogos" class="page-section">
+  <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+    <span class="badge" style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);color:var(--orange)">● HOJE — 1 jogo</span>
+    <span class="badge" style="background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:var(--blue)">● AMANHÃ — 4 jogos</span>
+    <span class="badge" style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);color:var(--purple)">● QUINTA — 4 jogos</span>
+    <span style="margin-left:auto;font-size:9px;color:var(--text4)">⭐ = Seleção no bilhete</span>
+  </div>
+  <div id="jogos-list"></div>
+</div>
+
+<!-- TABELA -->
+<div id="sec-tabela" class="page-section">
+  <div style="overflow-x:auto">
+    <table>
+      <thead><tr style="border-bottom:2px solid var(--green)">
+        <th style="text-align:center;width:32px"></th><th style="text-align:left">TIME</th>
+        <th style="text-align:center">PTS</th><th style="text-align:center">J</th>
+        <th style="text-align:center;color:var(--green)">V</th><th style="text-align:center;color:var(--yellow)">E</th>
+        <th style="text-align:center;color:var(--red)">D</th><th style="text-align:center">GP</th>
+        <th style="text-align:center">GC</th><th style="text-align:center">SG</th><th style="text-align:left">FORMA</th>
+      </tr></thead>
+      <tbody id="tabela-body"></tbody>
+    </table>
+  </div>
+  <div class="legenda">
+    <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div><span class="leg-txt">Top 6 — Libertadores</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--blue)"></div><span class="leg-txt">7–12 — Sul-Americana</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--red)"></div><span class="leg-txt">17–20 — Rebaixamento</span></div>
+  </div>
+</div>
+
+<!-- HISTÓRICO -->
+<div id="sec-historico" class="page-section">
+  <div class="acertos-box">
+    <div><div style="font-size:8px;color:var(--text4);letter-spacing:2px">ACERTOS TOTAIS</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;color:var(--text4);line-height:1">—</div></div>
+    <div><div style="font-size:8px;color:var(--text4);letter-spacing:2px">APOSTAS VERIFICADAS</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;color:#f1f5f9;line-height:1">0</div></div>
+    <div style="flex:1;font-size:11px;color:var(--text4);line-height:1.8">Após os jogos, envie ao agente:<br><span style="color:var(--green);font-weight:600">"Rodada 5 finalizada: Palmeiras ✓, São Paulo ✓, ..."</span></div>
+  </div>
+  <div class="rod-hist">
+    <div class="rod-hist-header"><span style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#e2e8f0">RODADA 5 — 10-13/03/2026</span><span class="badge badge-orange live">● EM ANDAMENTO</span></div>
+    <div id="hist-apostas"></div>
+    <div class="rod-hist-footer"><span id="hist-odd-info">—</span><span>Retorno potencial: <span style="color:var(--green);font-weight:700" id="hist-ret">R$ —</span></span></div>
+  </div>
+  <div class="hist-empty">As rodadas anteriores aparecerão aqui após serem concluídas.</div>
+</div>
+
+<!-- ══════════════ PERFORMANCE ══════════════ -->
+<div id="sec-performance" class="page-section">
+
+  <!-- Seletor de mês -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:1px">PERFORMANCE & BANKROLL</div>
+      <div style="font-size:9px;color:var(--text4);letter-spacing:2px;margin-top:2px">BRASILEIRÃO 2026 • BANKROLL REFERÊNCIA: R$10/RODADA</div>
+    </div>
+    <div class="mes-sel" id="mes-sel"></div>
+  </div>
+
+  <!-- KPIs de performance -->
+  <div class="perf-kpi-grid" id="perf-kpis"></div>
+
+  <!-- Gráfico de evolução do saldo -->
+  <div class="chart-wrap">
+    <div class="chart-title">
+      <span>📈 EVOLUÇÃO DO SALDO</span>
+      <span style="font-size:9px;color:var(--text4)" id="chart-periodo">Março 2026</span>
+    </div>
+    <div id="saldo-chart"></div>
+  </div>
+
+  <!-- 2 colunas: calendário + ROI mercado -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px" id="perf-2col">
+
+    <!-- Calendário -->
+    <div class="cal-wrap">
+      <div class="cal-title">📅 CALENDÁRIO MENSAL — <span id="cal-mes-label">MARÇO 2026</span></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:2px;background:rgba(34,197,94,.3)"></div><span style="font-size:9px;color:var(--text3)">Green</span></div>
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:2px;background:rgba(239,68,68,.3)"></div><span style="font-size:9px;color:var(--text3)">Red</span></div>
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:2px;background:rgba(234,179,8,.3)"></div><span style="font-size:9px;color:var(--text3)">Parcial</span></div>
+        <div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:2px;background:#0a1220;border:1px solid #1e3a5f"></div><span style="font-size:9px;color:var(--text3)">Agendado</span></div>
+      </div>
+    </div>
+
+    <!-- ROI por mercado -->
+    <div class="card">
+      <div class="card-header"><span class="card-title">ROI POR TIPO DE MERCADO</span></div>
+      <div id="roi-mercado"></div>
+    </div>
+  </div>
+
+  <!-- Todas as apostas detalhadas -->
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-header">
+      <span class="card-title">TODAS AS APOSTAS — DETALHADO</span>
+      <span style="font-size:9px;color:var(--text4)" id="perf-filtro-label">Março 2026</span>
+    </div>
+    <div class="ap-row header">
+      <span>JOGO / SELEÇÃO</span><span style="text-align:center">ODD</span>
+      <span style="text-align:center">CONF</span><span style="text-align:center">APOSTA</span>
+      <span style="text-align:center">RESULTADO</span><span style="text-align:right">P&L</span>
+    </div>
+    <div id="perf-apostas-lista"></div>
+  </div>
+
+  <!-- Ranking das melhores apostas -->
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-header"><span class="card-title">🏆 RANKING — APOSTAS POR CONFIANÇA</span></div>
+    <div id="ranking-apostas"></div>
+  </div>
+
+  <div class="alert-legal">
+    <span style="color:var(--red);font-weight:700;font-size:9px;letter-spacing:1px;display:block;margin-bottom:4px">⚠️ AVISO LEGAL</span>
+    Apostas esportivas envolvem risco financeiro real. Este painel é educacional e informativo. Proibido para menores de 18 anos. CVA: <span style="color:var(--blue)">0800 722 7236</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="sec-stats" class="page-section">
+  <div class="stats-grid" id="stats-grid"></div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-header"><span class="card-title">SEQUÊNCIAS RELEVANTES</span></div>
+    <div id="seq-full"></div>
+  </div>
+  <div class="alert-legal"><span style="color:var(--red);font-weight:700;font-size:9px;letter-spacing:1px;display:block;margin-bottom:4px">⚠️ AVISO LEGAL</span>Apostas esportivas envolvem risco financeiro real. Proibido para menores de 18 anos. CVA: <span style="color:var(--blue)">0800 722 7236</span></div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ═══════════════════════════════════════════════════
+// DADOS — ATUALIZAR A CADA RODADA
+// ═══════════════════════════════════════════════════
+const BANKROLL = 10; // valor padrão por rodada
+
+const DATA = {
+  rodada:5, periodo:"10–13/03/2026", atualizacao:"10/03/2026 17:00",
+
+  apostas:[
+    {jogo:"Vasco x Palmeiras",       selecao:"Palmeiras",        mercado:"Resultado Final",  odd:1.87, conf:82, resultado:null, placar:null, rodada:5, data:"12/03"},
+    {jogo:"São Paulo x Chapecoense", selecao:"São Paulo",         mercado:"Resultado Final",  odd:1.52, conf:80, resultado:null, placar:null, rodada:5, data:"12/03"},
+    {jogo:"Flamengo x Cruzeiro",     selecao:"+1.5 Gols (FLA)",  mercado:"Total de Gols",    odd:1.66, conf:75, resultado:null, placar:null, rodada:5, data:"11/03"},
+    {jogo:"Bahia x Vitória",         selecao:"Bahia",             mercado:"Resultado Final",  odd:1.72, conf:68, resultado:null, placar:null, rodada:5, data:"11/03"},
+  ],
+
+  // HISTÓRICO DE RODADAS ANTERIORES
+  // Quando atualizar: resultado: true = GREEN, false = RED
+  historicoRodadas:[
+    // Exemplo de como ficará quando rodada for concluída:
+    // {
+    //   rodada:5, periodo:"10-13/03/2026",
+    //   apostas:[
+    //     {jogo:"Vasco x Palmeiras", selecao:"Palmeiras", mercado:"Resultado Final", odd:1.87, conf:82, resultado:true,  placar:"0x2", data:"12/03"},
+    //     {jogo:"São Paulo x Chap.", selecao:"São Paulo",  mercado:"Resultado Final", odd:1.52, conf:80, resultado:true,  placar:"3x0", data:"12/03"},
+    //     {jogo:"Flamengo x Cruz.",  selecao:"+1.5 FLA",  mercado:"Total de Gols",   odd:1.66, conf:75, resultado:false, placar:"1x0", data:"11/03"},
+    //     {jogo:"Bahia x Vitória",   selecao:"Bahia",     mercado:"Resultado Final",  odd:1.72, conf:68, resultado:true,  placar:"2x1", data:"11/03"},
+    //   ],
+    //   tipoAposta:"multipla", valor:100
+    // }
+  ],
+
+  jogos:[
+    {data:"10/03",hora:"21h30",m:"Mirassol",      v:"Santos",        local:"Est. Campos Maia",  tv:"Amazon Prime",  aposta:"Santos ou Empate",   odd:1.71,conf:60,status:"HOJE",  destaque:false},
+    {data:"11/03",hora:"19h00",m:"Atlético-MG",   v:"Internacional", local:"Mineirão",           tv:"SporTV/Prem.", aposta:"Atlético-MG (DC)",   odd:1.44,conf:65,status:"AMANHÃ",destaque:false},
+    {data:"11/03",hora:"19h00",m:"Athletico-PR",  v:"Botafogo",      local:"Arena da Baixada",   tv:"Premiere",     aposta:"Athletico-PR",       odd:2.05,conf:60,status:"AMANHÃ",destaque:false},
+    {data:"11/03",hora:"20h00",m:"Bahia",         v:"Vitória",       local:"Fonte Nova",         tv:"Premiere",     aposta:"Bahia ⭐",            odd:1.72,conf:68,status:"AMANHÃ",destaque:true },
+    {data:"11/03",hora:"21h30",m:"Flamengo",      v:"Cruzeiro",      local:"Maracanã",           tv:"Globo/Prem.",  aposta:"+1.5 Gols FLA ⭐",    odd:1.66,conf:75,status:"AMANHÃ",destaque:true },
+    {data:"11/03",hora:"21h30",m:"Corinthians",   v:"Coritiba",      local:"Neo Química Arena",  tv:"Globo/Prem.",  aposta:"Corinthians",        odd:1.61,conf:70,status:"AMANHÃ",destaque:false},
+    {data:"12/03",hora:"19h00",m:"Remo",          v:"Fluminense",    local:"Mangueirão",         tv:"Premiere",     aposta:"Flu não perde (1X)", odd:1.65,conf:62,status:"QUINTA",destaque:false},
+    {data:"12/03",hora:"19h30",m:"Vasco",         v:"Palmeiras",     local:"São Januário",       tv:"Record/Cazé",  aposta:"Palmeiras ⭐",        odd:1.87,conf:82,status:"QUINTA",destaque:true },
+    {data:"12/03",hora:"20h00",m:"São Paulo",     v:"Chapecoense",   local:"Morumbi",            tv:"Premiere",     aposta:"São Paulo ⭐",        odd:1.52,conf:80,status:"QUINTA",destaque:true },
+    {data:"12/03",hora:"21h30",m:"Grêmio",        v:"Bragantino",    local:"Arena do Grêmio",    tv:"Premiere",     aposta:"-2.5 Gols",          odd:1.82,conf:58,status:"QUINTA",destaque:false},
+  ],
+
+  classificacao:[
+    {pos:1, time:"Palmeiras",     pts:10,j:4,v:3,e:1,d:0,gp:12,gc:4, sg:8,  forma:["V","V","E","V"]},
+    {pos:2, time:"São Paulo",     pts:10,j:4,v:3,e:1,d:0,gp:8, gc:4, sg:4,  forma:["V","V","E","V"]},
+    {pos:3, time:"Corinthians",   pts:7, j:4,v:2,e:1,d:1,gp:7, gc:4, sg:3,  forma:["V","E","D","V"]},
+    {pos:4, time:"Bahia",         pts:7, j:3,v:2,e:1,d:0,gp:5, gc:2, sg:3,  forma:["V","E","V","?"]},
+    {pos:5, time:"Fluminense",    pts:7, j:3,v:2,e:1,d:0,gp:4, gc:2, sg:2,  forma:["V","E","V","?"]},
+    {pos:6, time:"Bragantino",    pts:6, j:4,v:1,e:3,d:0,gp:4, gc:3, sg:1,  forma:["E","V","E","E"]},
+    {pos:7, time:"Athletico-PR",  pts:6, j:4,v:1,e:3,d:0,gp:2, gc:1, sg:1,  forma:["E","V","E","E"]},
+    {pos:8, time:"Botafogo",      pts:5, j:3,v:1,e:2,d:0,gp:3, gc:2, sg:1,  forma:["E","V","E","?"]},
+    {pos:9, time:"Cruzeiro",      pts:4, j:4,v:1,e:1,d:2,gp:5, gc:9, sg:-4, forma:["V","E","D","D"]},
+    {pos:10,time:"Flamengo",      pts:4, j:3,v:1,e:1,d:1,gp:5, gc:5, sg:0,  forma:["V","D","E","?"]},
+    {pos:11,time:"Santos",        pts:4, j:4,v:1,e:1,d:2,gp:4, gc:5, sg:-1, forma:["D","V","D","V"]},
+    {pos:12,time:"Grêmio",        pts:3, j:3,v:1,e:0,d:2,gp:3, gc:4, sg:-1, forma:["V","D","D","?"]},
+    {pos:13,time:"Atlético-MG",   pts:2, j:4,v:0,e:2,d:2,gp:2, gc:5, sg:-3, forma:["E","E","D","D"]},
+    {pos:14,time:"Internacional", pts:2, j:4,v:0,e:2,d:2,gp:4, gc:6, sg:-2, forma:["E","E","D","D"]},
+    {pos:15,time:"Vitória",       pts:2, j:3,v:0,e:2,d:1,gp:2, gc:3, sg:-1, forma:["E","D","E","?"]},
+    {pos:16,time:"Mirassol",      pts:2, j:4,v:0,e:2,d:2,gp:2, gc:5, sg:-3, forma:["E","D","E","D"]},
+    {pos:17,time:"Remo",          pts:2, j:3,v:0,e:2,d:1,gp:2, gc:4, sg:-2, forma:["E","E","D","?"]},
+    {pos:18,time:"Chapecoense",   pts:1, j:3,v:0,e:1,d:2,gp:1, gc:4, sg:-3, forma:["D","E","D","?"]},
+    {pos:19,time:"Coritiba",      pts:1, j:4,v:0,e:1,d:3,gp:1, gc:7, sg:-6, forma:["E","D","D","D"]},
+    {pos:20,time:"Vasco",         pts:1, j:4,v:0,e:1,d:3,gp:2, gc:8, sg:-6, forma:["D","D","E","D"]},
+  ],
+
+  sequencias:[
+    {desc:"Palmeiras invicto x Vasco",            val:"14 jogos"},
+    {desc:"Flamengo invicto em casa (Série A)",   val:"24 jogos"},
+    {desc:"Fla x Cruzeiro — invicto no Maracanã", val:"12 jogos"},
+    {desc:"Cruzeiro gols sofridos no 2ºT",        val:"7 de 9"},
+    {desc:"Palmeiras invicto em todos os tempos", val:"4 rodadas"},
+    {desc:"Atlético-MG marcou em casa x Inter",   val:"7 de 10"},
+  ],
+
+  stats:[
+    {label:"Melhor Ataque",      time:"Palmeiras",  val:"12 gols",   c:"#22c55e"},
+    {label:"Pior Defesa",        time:"Cruzeiro",   val:"9 gols",    c:"#ef4444"},
+    {label:"Mais Finalizações",  time:"Vasco",      val:"85 chutes", c:"#f59e0b"},
+    {label:"Pior Eficiência",    time:"Vasco",      val:"3,5%",      c:"#ef4444"},
+    {label:"Invicto em Casa",    time:"Flamengo",   val:"24 jogos",  c:"#a78bfa"},
+    {label:"Melhor Saldo",       time:"Palmeiras",  val:"+8",        c:"#22c55e"},
+  ]
+};
+
+// ═══ HELPERS ═══
+const $=id=>document.getElementById(id);
+const fc=c=>c>=75?"#22c55e":c>=65?"#eab308":"#f97316";
+const ff=f=>f==="V"?"#22c55e":f==="E"?"#eab308":f==="D"?"#ef4444":"#374151";
+const sc=s=>s==="HOJE"?"#f97316":s==="AMANHÃ"?"#3b82f6":"#8b5cf6";
+const sbg=s=>s==="HOJE"?"rgba(249,115,22,.1)":s==="AMANHÃ"?"rgba(59,130,246,.1)":"rgba(139,92,246,.1)";
+const sbd=s=>s==="HOJE"?"rgba(249,115,22,.25)":s==="AMANHÃ"?"rgba(59,130,246,.25)":"rgba(139,92,246,.25)";
+const fmt=n=>n.toFixed(2).replace(".",",");
+const fmtPL=v=>{
+  const s=v>=0?"+":"";
+  return `<span style="color:${v>=0?"#22c55e":"#ef4444"};font-weight:700">${s}R$${fmt(Math.abs(v))}</span>`;
+};
+const resHtml=r=>r===null
+  ?'<span class="result-badge result-pending">AGUARDA</span>'
+  :r?'<span class="result-badge result-green">✓ GREEN</span>'
+    :'<span class="result-badge result-red">✗ RED</span>';
+
+// Todas as apostas (históricas + ativas)
+function todasApostas(){
+  const hist = DATA.historicoRodadas.flatMap(r=>r.apostas.map(a=>({...a,_tipo:r.tipoAposta,_valor:r.valor})));
+  const ativas = DATA.apostas.map(a=>({...a,_tipo:"multipla",_valor:BANKROLL}));
+  return [...hist,...ativas];
+}
+
+// P&L de uma aposta individual (simples)
+function calcPL(a){
+  if(a.resultado===null) return null;
+  if(a._tipo==="simples"){
+    return a.resultado ? (a._valor*a.odd - a._valor) : -a._valor;
+  }
+  return null; // múltipla calculada a nível de rodada
+}
+
+// P&L de uma rodada múltipla
+function calcPLRodada(r){
+  if(r.apostas.some(a=>a.resultado===null)) return null;
+  const allGreen = r.apostas.every(a=>a.resultado===true);
+  const oddTotal = r.apostas.reduce((acc,a)=>acc*a.odd,1);
+  if(allGreen) return r.valor*oddTotal - r.valor;
+  return -r.valor;
+}
+
+// ═══ TABS ═══
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".page-section").forEach(s=>s.classList.remove("active"));
+    btn.classList.add("active");
+    $("sec-"+btn.dataset.tab).classList.add("active");
+    if(btn.dataset.tab==="performance") renderPerformance("marco");
+  });
+});
+
+// ═══ ODD TOTAL ═══
+const oddTotal = DATA.apostas.reduce((a,b)=>a*b.odd,1);
+$("kpi-odd").textContent = oddTotal.toFixed(2)+"×";
+$("kpi-ret").textContent = `R$10 → R$${fmt(10*oddTotal)}`;
+$("ov-ret").textContent = `Retorno: R$${fmt(10*oddTotal)}`;
+
+// ═══ OVERVIEW ═══
+$("ov-apostas").innerHTML = DATA.apostas.map(a=>`
+  <div class="bet-row">
+    <div style="flex:1"><div style="font-size:10px;color:var(--text3);margin-bottom:2px">${a.jogo}</div><div style="font-size:13px;font-weight:600;color:#f1f5f9">${a.selecao}</div></div>
+    <div style="text-align:center;min-width:44px"><div style="font-size:8px;color:var(--text4);letter-spacing:1px">CONF</div><div style="font-size:15px;font-weight:700;color:${fc(a.conf)}">${a.conf}%</div></div>
+    <div style="text-align:center;min-width:44px"><div style="font-size:8px;color:var(--text4);letter-spacing:1px">ODD</div><div style="font-size:15px;font-weight:700;color:var(--gold)">${a.odd.toFixed(2)}</div></div>
+    ${resHtml(a.resultado)}
+  </div>`).join("");
+
+$("top5-list").innerHTML = DATA.classificacao.slice(0,5).map((t,i)=>`
+  <div class="top5-row">
+    <span style="font-size:11px;font-weight:700;color:${i<4?"var(--green)":"var(--text4)"};min-width:14px">${t.pos}</span>
+    <span style="flex:1;font-size:12px;color:#e2e8f0">${t.time}</span>
+    <span style="font-size:14px;font-weight:700;color:#f1f5f9;min-width:20px;text-align:right">${t.pts}</span>
+    <div style="display:flex;gap:2px">${t.forma.map(f=>`<div class="forma-dot" style="background:${ff(f)}">${f==="?"?"":f}</div>`).join("")}</div>
+  </div>`).join("");
+
+$("seq-mini").innerHTML = DATA.sequencias.slice(0,4).map((s,i)=>`
+  <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:${i<3?"1px solid var(--border2)":"none"}">
+    <span style="font-size:10px;color:var(--text2)">${s.desc}</span>
+    <span style="font-size:10px;color:var(--gold);font-weight:700;margin-left:8px;white-space:nowrap">${s.val}</span>
+  </div>`).join("");
+
+// ═══ BILHETE ═══
+$("bet-selecoes").innerHTML = DATA.apostas.map(a=>`
+  <div class="bet-sel-row">
+    <div style="font-size:8px;color:rgba(255,255,255,.22);letter-spacing:1px;margin-bottom:2px">SÉRIE A ${a.conf>=75?"• 🔥 DESTAQUE":a.conf>=70?"• ⚡ BOM":"• ✓"}</div>
+    <div style="font-size:13px;color:#e2e8f0;font-weight:600;margin-bottom:3px">${a.jogo}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:13px;color:var(--betano);font-weight:700">${a.selecao}</span>
+      <span style="background:linear-gradient(135deg,#f5a623,#d97706);color:#000;padding:4px 11px;border-radius:6px;font-size:16px;font-weight:900">${a.odd.toFixed(2)}</span>
+    </div>
+  </div>`).join("");
+
+$("odd-total-display").textContent = oddTotal.toFixed(2);
+let valorAtual = 10;
+function updateBilhete(){
+  const ret = valorAtual*oddTotal;
+  $("b-apostado").textContent = "R$ "+fmt(valorAtual);
+  $("b-lucro").textContent = "+ R$ "+fmt(ret-valorAtual);
+  $("b-total").textContent = "R$ "+fmt(ret);
+}
+updateBilhete();
+$("val-btns").addEventListener("click",e=>{
+  const btn=e.target.closest("[data-v]");
+  if(!btn)return;
+  document.querySelectorAll(".val-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  valorAtual=+btn.dataset.v;
+  updateBilhete();
+});
+$("bilhete-analise").innerHTML = DATA.apostas.map(a=>`
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:13px 15px;margin-bottom:10px;border-left:3px solid ${fc(a.conf)}">
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+      <span style="font-size:12px;font-weight:600;color:#f1f5f9">${a.jogo}</span>
+      <span style="font-size:14px;font-weight:700;color:var(--gold)">@${a.odd.toFixed(2)}</span>
+    </div>
+    <div style="font-size:13px;color:${fc(a.conf)};font-weight:600;margin-bottom:6px">→ ${a.selecao}</div>
+    <div class="prog"><div class="prog-fill" style="width:${a.conf}%;background:${fc(a.conf)}"></div></div>
+    <div style="display:flex;justify-content:space-between">
+      <span style="font-size:9px;color:var(--text4)">${a.conf}% de confiança</span>
+      ${resHtml(a.resultado)}
+    </div>
+  </div>`).join("");
+$("res-odd").textContent = oddTotal.toFixed(2)+"×";
+$("res-ret").textContent = "R$ "+fmt(10*oddTotal);
+
+// ═══ JOGOS ═══
+$("jogos-list").innerHTML = DATA.jogos.map(j=>`
+  <div class="jogo-row${j.destaque?" destaque":""}">
+    <div class="status-badge" style="background:${sbg(j.status)};border:1px solid ${sbd(j.status)};color:${sc(j.status)}">${j.status}</div>
+    <div style="min-width:64px;font-size:10px;color:var(--text3)"><div>${j.data}</div><div style="color:var(--text4)">${j.hora}</div></div>
+    <div style="flex:1;min-width:160px"><div style="font-size:14px;font-weight:600;color:#f1f5f9">${j.m} <span style="color:#374151">×</span> ${j.v}</div><div style="font-size:9px;color:var(--text4);margin-top:2px">${j.local} • ${j.tv}</div></div>
+    <div style="min-width:160px"><div style="font-size:8px;color:var(--text4);letter-spacing:1px;margin-bottom:2px">APOSTA</div><div style="font-size:13px;font-weight:700;color:${j.destaque?"var(--gold)":"var(--text2)"}">${j.aposta}</div></div>
+    <div style="display:flex;gap:14px">
+      <div style="text-align:center"><div style="font-size:8px;color:var(--text4);letter-spacing:1px">ODD</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--gold)">${j.odd.toFixed(2)}</div></div>
+      <div style="text-align:center"><div style="font-size:8px;color:var(--text4);letter-spacing:1px">CONF</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:${fc(j.conf)}">${j.conf}%</div></div>
+    </div>
+  </div>`).join("");
+
+// ═══ TABELA ═══
+$("tabela-body").innerHTML = DATA.classificacao.map((t,i)=>{
+  const pc=i<6?"var(--green)":i>15?"var(--red)":"var(--text4)";
+  const sg=t.sg>0?"var(--green)":t.sg<0?"var(--red)":"var(--text3)";
+  const rb=i<6?"rgba(34,197,94,.025)":i>15?"rgba(239,68,68,.025)":"transparent";
+  return `<tr style="background:${rb}">
+    <td style="text-align:center"><span style="font-size:11px;font-weight:700;color:${pc}">${t.pos}</span></td>
+    <td><span style="font-size:13px;font-weight:600;color:#f1f5f9">${t.time}</span>${i===0?'<span style="margin-left:6px;font-size:8px;color:var(--gold)">★</span>':""}${i===19?'<span style="margin-left:6px;font-size:8px;color:var(--red)">▼</span>':""}</td>
+    <td style="text-align:center;font-weight:700;font-size:14px;color:#f1f5f9">${t.pts}</td>
+    <td style="text-align:center;color:var(--text3)">${t.j}</td>
+    <td style="text-align:center;color:var(--green)">${t.v}</td>
+    <td style="text-align:center;color:var(--yellow)">${t.e}</td>
+    <td style="text-align:center;color:var(--red)">${t.d}</td>
+    <td style="text-align:center;color:var(--text2)">${t.gp}</td>
+    <td style="text-align:center;color:var(--text2)">${t.gc}</td>
+    <td style="text-align:center;font-weight:700;color:${sg}">${t.sg>0?"+":""}${t.sg}</td>
+    <td><div style="display:flex;gap:3px">${t.forma.map(f=>`<div class="forma-dot" style="background:${ff(f)}">${f==="?"?"·":f}</div>`).join("")}</div></td>
+  </tr>`;}).join("");
+
+// ═══ HISTÓRICO ═══
+$("hist-apostas").innerHTML = DATA.apostas.map((a,i)=>`
+  <div style="display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:${i<DATA.apostas.length-1?"1px solid var(--border2)":"none"};flex-wrap:wrap">
+    <div style="flex:1;min-width:160px"><div style="font-size:10px;color:var(--text3)">${a.jogo}</div><div style="font-size:13px;font-weight:600;color:#f1f5f9;margin-top:1px">${a.selecao}</div></div>
+    ${a.placar?`<div style="font-size:12px;color:var(--text2)">${a.placar}</div>`:""}
+    <div style="font-size:13px;font-weight:700;color:var(--gold)">@${a.odd.toFixed(2)}</div>
+    ${resHtml(a.resultado)}
+  </div>`).join("");
+$("hist-odd-info").textContent=`Múltipla ${DATA.apostas.length} seleções • Odd: ${oddTotal.toFixed(2)}×`;
+$("hist-ret").textContent=`R$ ${fmt(10*oddTotal)}`;
+
+// ═══ STATS ═══
+$("stats-grid").innerHTML = DATA.stats.map(s=>`
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;border-top:2px solid ${s.c}">
+    <div style="font-size:8px;color:var(--text4);letter-spacing:2px;margin-bottom:6px">${s.label.toUpperCase()}</div>
+    <div style="font-size:11px;color:var(--text2);margin-bottom:3px">${s.time}</div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:${s.c}">${s.val}</div>
+  </div>`).join("");
+$("seq-full").innerHTML = DATA.sequencias.map((s,i)=>`
+  <div class="seq-row"><span style="font-size:12px;color:var(--text2)">${s.desc}</span><span class="seq-val">${s.val}</span></div>`).join("");
+
+// ═══════════════════════════════════
+// PERFORMANCE — RENDERIZAÇÃO COMPLETA
+// ═══════════════════════════════════
+const MESES = [{id:"marco",label:"MAR",full:"Março 2026",num:3}];
+// Quando tiver mais meses, adicionar aqui:
+// {id:"abril",label:"ABR",full:"Abril 2026",num:4}, etc.
+
+let mesSelecionado = "marco";
+
+function apostasDoMes(mesId){
+  const mes = MESES.find(m=>m.id===mesId);
+  const hist = DATA.historicoRodadas.filter(r=>{
+    if(!r.apostas[0]) return false;
+    const d = r.apostas[0].data; // "dd/mm"
+    return d && parseInt(d.split("/")[1])===mes.num;
+  });
+  // Apostas ativas da rodada atual se for o mês correto
+  const ativas = DATA.apostas.filter(a=>{
+    const d=a.data; return d && parseInt(d.split("/")[1])===mes.num;
+  });
+  return {hist, ativas, mes};
+}
+
+function renderPerformance(mesId){
+  mesSelecionado = mesId;
+
+  // Seletor de meses
+  $("mes-sel").innerHTML = MESES.map(m=>`
+    <button class="mes-btn${m.id===mesId?" active":""}" onclick="renderPerformance('${m.id}')">${m.full}</button>`).join("");
+
+  const {hist, ativas, mes} = apostasDoMes(mesId);
+  $("cal-mes-label").textContent = mes.full.toUpperCase();
+  $("chart-periodo").textContent = mes.full;
+  $("perf-filtro-label").textContent = mes.full;
+
+  // ── Calcular métricas ──
+  let totalGasto=0, totalRetorno=0, greens=0, reds=0, pendentes=0;
+  let saldoCurva=[{label:"Início",val:0}];
+  let saldoAcc=0;
+
+  hist.forEach(r=>{
+    const pl=calcPLRodada(r);
+    totalGasto+=r.valor;
+    if(pl===null){pendentes++; return;}
+    if(pl>0){greens++; totalRetorno+=r.valor+pl;}
+    else{reds++;}
+    saldoAcc+=pl;
+    saldoCurva.push({label:`R${r.rodada}`,val:saldoAcc});
+  });
+
+  // Apostas ativas (pendentes)
+  ativas.forEach(()=>pendentes++);
+  const rodadasAtivas = ativas.length>0?1:0;
+
+  const totalRodadas = hist.length + rodadasAtivas;
+  const lucroTotal = saldoAcc;
+  const roi = totalGasto>0?((lucroTotal/totalGasto)*100):0;
+  const pctAcertos = (hist.length>0)?(greens/hist.length*100):null;
+
+  // Se não há dados históricos, mostrar estado inicial
+  const semDados = hist.length===0;
+
+  // ── KPIs ──
+  $("perf-kpis").innerHTML = `
+    <div class="perf-kpi ${lucroTotal>=0?"green":"red"}">
+      <div class="perf-kpi-lbl">P&L TOTAL</div>
+      <div class="perf-kpi-val" style="color:${lucroTotal>=0?"var(--green)":"var(--red)"}">${lucroTotal>=0?"+":""}R$${fmt(Math.abs(lucroTotal))}</div>
+      <div class="perf-kpi-sub">${semDados?"Aguardando resultados":"Lucro/Prejuízo acumulado"}</div>
+    </div>
+    <div class="perf-kpi ${roi>=0?"green":"red"}">
+      <div class="perf-kpi-lbl">ROI</div>
+      <div class="perf-kpi-val" style="color:${roi>=0?"var(--green)":"var(--red)"}">${semDados?"—":((roi>=0?"+":"")+roi.toFixed(1)+"%")}</div>
+      <div class="perf-kpi-sub">Retorno sobre investimento</div>
+    </div>
+    <div class="perf-kpi gold">
+      <div class="perf-kpi-lbl">INVESTIDO</div>
+      <div class="perf-kpi-val" style="color:var(--gold)">R$${fmt(totalGasto + (rodadasAtivas*BANKROLL))}</div>
+      <div class="perf-kpi-sub">${totalRodadas} rodada${totalRodadas!==1?"s":""} • R$${BANKROLL}/rodada</div>
+    </div>
+    <div class="perf-kpi blue">
+      <div class="perf-kpi-lbl">ACERTOS</div>
+      <div class="perf-kpi-val" style="color:var(--blue)">${pctAcertos!==null?pctAcertos.toFixed(0)+"%":"—"}</div>
+      <div class="perf-kpi-sub">${greens} green${greens!==1?"s":""} / ${reds} red${reds!==1?"s":""} ${pendentes>0?"/ "+pendentes+" pend.":""}</div>
+    </div>
+    <div class="perf-kpi green">
+      <div class="perf-kpi-lbl">MAIOR GREEN</div>
+      <div class="perf-kpi-val" style="color:var(--green)">${semDados?"—":"+R$"+fmt(Math.max(0,...hist.filter(r=>calcPLRodada(r)>0).map(r=>calcPLRodada(r))))}</div>
+      <div class="perf-kpi-sub">Melhor rodada</div>
+    </div>
+    <div class="perf-kpi red">
+      <div class="perf-kpi-lbl">MAIOR RED</div>
+      <div class="perf-kpi-val" style="color:var(--red)">${semDados?"—":"-R$"+fmt(Math.abs(Math.min(0,...hist.filter(r=>calcPLRodada(r)<0).map(r=>calcPLRodada(r))||[0])))}</div>
+      <div class="perf-kpi-sub">Pior rodada</div>
+    </div>`;
+
+  // ── Gráfico SVG ──
+  const pontos = semDados
+    ? [{label:"R5 (aguarda)",val:0}]
+    : [...saldoCurva, {label:`R5 (aguarda)`,val:saldoAcc}];
+
+  const W=600, H=110, PAD=30;
+  const vals = pontos.map(p=>p.val);
+  const minV = Math.min(...vals, -BANKROLL*0.5);
+  const maxV = Math.max(...vals,  BANKROLL*0.5);
+  const range = maxV-minV || 1;
+
+  const px=(i)=>PAD + i*(W-PAD*2)/(Math.max(pontos.length-1,1));
+  const py=(v)=>H - PAD - ((v-minV)/range)*(H-PAD*2);
+  const zeroY = py(0);
+
+  let path="", area="";
+  pontos.forEach((p,i)=>{
+    const x=px(i), y=py(p.val);
+    path+=(i===0?`M${x},${y}`:`L${x},${y}`);
+    area+=(i===0?`M${x},${zeroY} L${x},${y}`:`L${x},${y}`);
+  });
+  area+=` L${px(pontos.length-1)},${zeroY} Z`;
+
+  $("saldo-chart").innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:130px" class="linechart">
+      <defs>
+        <linearGradient id="ggrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${lucroTotal>=0?"#22c55e":"#ef4444"}" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="${lucroTotal>=0?"#22c55e":"#ef4444"}" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <!-- grid lines -->
+      ${[0.25,0.5,0.75].map(f=>`<line x1="${PAD}" y1="${PAD+f*(H-PAD*2)}" x2="${W-PAD}" y2="${PAD+f*(H-PAD*2)}" stroke="#1e293b" stroke-width="1"/>`).join("")}
+      <!-- zero line -->
+      <line x1="${PAD}" y1="${zeroY}" x2="${W-PAD}" y2="${zeroY}" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="${PAD-4}" y="${zeroY+4}" fill="#475569" font-size="8" text-anchor="end">0</text>
+      <!-- area fill -->
+      <path d="${area}" fill="url(#ggrad)"/>
+      <!-- line -->
+      <path d="${path}" fill="none" stroke="${lucroTotal>=0?"#22c55e":"#ef4444"}" stroke-width="2" stroke-linejoin="round"/>
+      <!-- pontos -->
+      ${pontos.map((p,i)=>`
+        <circle cx="${px(i)}" cy="${py(p.val)}" r="3.5" fill="${p.val>0?"#22c55e":p.val<0?"#ef4444":"#475569"}" stroke="#07090f" stroke-width="1.5"/>
+        <text x="${px(i)}" y="${H-4}" fill="#475569" font-size="8" text-anchor="middle">${p.label}</text>
+        ${p.val!==0?`<text x="${px(i)}" y="${py(p.val)-8}" fill="${p.val>0?"#22c55e":"#ef4444"}" font-size="8" text-anchor="middle" font-weight="700">${p.val>0?"+":""}R$${fmt(Math.abs(p.val))}</text>`:""}
+      `).join("")}
+    </svg>`;
+
+  // ── Calendário ──
+  const diasNoMes = [31,28,31,30,31,30,31,31,30,31,30,31][mes.num-1];
+  const primeiroDia = new Date(2026,mes.num-1,1).getDay(); // 0=dom
+  const diasSemana = ["DOM","SEG","TER","QUA","QUI","SEX","SÁB"];
+
+  // Mapear jogos por dia
+  const jogosPorDia = {};
+  // Apostas ativas
+  DATA.apostas.forEach(a=>{
+    if(!a.data) return;
+    const parts=a.data.split("/"); if(parseInt(parts[1])!==mes.num) return;
+    const d=parseInt(parts[0]);
+    if(!jogosPorDia[d]) jogosPorDia[d]={apostas:[],resultado:null};
+    jogosPorDia[d].apostas.push(a);
+  });
+  // Históricas
+  hist.forEach(r=>{
+    r.apostas.forEach(a=>{
+      if(!a.data) return;
+      const parts=a.data.split("/"); if(parseInt(parts[1])!==mes.num) return;
+      const d=parseInt(parts[0]);
+      if(!jogosPorDia[d]) jogosPorDia[d]={apostas:[],resultado:null};
+      jogosPorDia[d].apostas.push(a);
+    });
+  });
+
+  // Calcular resultado do dia
+  Object.keys(jogosPorDia).forEach(d=>{
+    const aps=jogosPorDia[d].apostas;
+    if(aps.every(a=>a.resultado===null)) jogosPorDia[d].resultado="pending";
+    else if(aps.every(a=>a.resultado===true)) jogosPorDia[d].resultado="green";
+    else if(aps.some(a=>a.resultado===false)) jogosPorDia[d].resultado="red";
+    else jogosPorDia[d].resultado="partial";
+  });
+
+  let calHtml = diasSemana.map(d=>`<div class="cal-day-header">${d}</div>`).join("");
+  // células vazias antes do dia 1
+  for(let i=0;i<primeiroDia;i++) calHtml+=`<div class="cal-day empty"></div>`;
+
+  for(let d=1;d<=diasNoMes;d++){
+    const info = jogosPorDia[d];
+    let cls="cal-day", dots="";
+    if(info){
+      cls+=" has-game";
+      if(info.resultado==="green") cls+=" green-day";
+      else if(info.resultado==="red") cls+=" red-day";
+      else if(info.resultado==="partial") cls+=" partial-day";
+      dots = info.apostas.map(a=>`<div class="cal-dot" style="background:${a.resultado===true?"#22c55e":a.resultado===false?"#ef4444":"#3b82f6"}"></div>`).join("");
+    }
+    calHtml+=`<div class="${cls}">
+      <div class="cal-day-num" style="color:${info?'#e2e8f0':'var(--text4)'}">${d}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:1px">${dots}</div>
+      ${info&&info.resultado==="pending"?'<div style="font-size:7px;color:var(--blue);margin-top:2px">jogos</div>':""}
+      ${info&&info.resultado==="green"?'<div style="font-size:7px;color:var(--green);margin-top:2px">✓ green</div>':""}
+      ${info&&info.resultado==="red"?'<div style="font-size:7px;color:var(--red);margin-top:2px">✗ red</div>':""}
+    </div>`;
+  }
+  $("cal-grid").innerHTML = calHtml;
+
+  // ── ROI por mercado ──
+  const mercados = {};
+  const allAps = [...hist.flatMap(r=>r.apostas), ...DATA.apostas];
+  allAps.forEach(a=>{
+    if(!mercados[a.mercado]) mercados[a.mercado]={total:0,green:0,red:0};
+    mercados[a.mercado].total++;
+    if(a.resultado===true) mercados[a.mercado].green++;
+    if(a.resultado===false) mercados[a.mercado].red++;
+  });
+
+  $("roi-mercado").innerHTML = Object.entries(mercados).length===0
+    ? `<div style="padding:20px;text-align:center;color:var(--text4);font-size:11px">Dados disponíveis após resultados</div>`
+    : Object.entries(mercados).map(([m,v])=>{
+        const pct=v.total>0?((v.green/v.total)*100):0;
+        const barC=pct>=60?"var(--green)":pct>=40?"var(--yellow)":"var(--red)";
+        return `<div class="roi-row">
+          <div style="min-width:130px;font-size:11px;color:var(--text2)">${m}</div>
+          <div class="roi-bar-bg"><div class="roi-bar-fill" style="width:${v.total>0?pct:0}%;background:${barC}"></div></div>
+          <div style="min-width:36px;text-align:right;font-size:11px;font-weight:700;color:${barC}">${v.total>0?pct.toFixed(0):0}%</div>
+          <div style="min-width:50px;text-align:right;font-size:10px;color:var(--text4)">${v.green}✓ ${v.red}✗</div>
+        </div>`;}).join("");
+
+  // ── Lista detalhada apostas ──
+  const listaAps = [
+    ...hist.flatMap(r=>r.apostas.map(a=>({...a,_rodada:r.rodada,_tipo:r.tipoAposta,_valor:r.valor}))),
+    ...DATA.apostas.map(a=>({...a,_rodada:DATA.rodada,_tipo:"multipla",_valor:BANKROLL}))
+  ];
+
+  $("perf-apostas-lista").innerHTML = listaAps.length===0
+    ? `<div style="padding:20px;text-align:center;color:var(--text4);font-size:11px">Nenhuma aposta registrada</div>`
+    : listaAps.map(a=>{
+        const pl = a._tipo==="simples" ? calcPL(a) : null;
+        const plHtml = pl!==null ? fmtPL(pl) : `<span style="color:var(--text4);font-size:10px">${a.resultado===null?"pendente":"múltipla"}</span>`;
+        return `<div class="ap-row">
+          <div>
+            <div style="font-size:10px;color:var(--text3);margin-bottom:1px">R${a._rodada} • ${a.jogo}</div>
+            <div style="font-size:12px;font-weight:600;color:#f1f5f9">${a.selecao}</div>
+            <div style="font-size:9px;color:var(--text4);margin-top:1px">${a.mercado}</div>
+          </div>
+          <div style="text-align:center;font-size:14px;font-weight:700;color:var(--gold)">${a.odd.toFixed(2)}</div>
+          <div style="text-align:center"><div style="font-size:12px;font-weight:700;color:${fc(a.conf)}">${a.conf}%</div></div>
+          <div style="text-align:center;font-size:10px;color:var(--text3)">R$${a._valor}</div>
+          <div style="text-align:center">${resHtml(a.resultado)}</div>
+          <div style="text-align:right">${plHtml}</div>
+        </div>`;}).join("");
+
+  // ── Ranking por confiança ──
+  const sorted=[...listaAps].sort((a,b)=>b.conf-a.conf).slice(0,8);
+  $("ranking-apostas").innerHTML = sorted.map((a,i)=>`
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:${i<sorted.length-1?"1px solid var(--border2)":"none"}">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:${i<3?"var(--gold)":"var(--text4)"};min-width:24px">#${i+1}</span>
+      <div style="flex:1">
+        <div style="font-size:10px;color:var(--text3)">${a.jogo}</div>
+        <div style="font-size:12px;font-weight:600;color:#f1f5f9">${a.selecao}</div>
+      </div>
+      <div style="text-align:center;min-width:44px">
+        <div style="font-size:8px;color:var(--text4);letter-spacing:1px">ODD</div>
+        <div style="font-size:14px;font-weight:700;color:var(--gold)">${a.odd.toFixed(2)}</div>
+      </div>
+      <div style="min-width:80px">
+        <div style="font-size:8px;color:var(--text4);letter-spacing:1px;margin-bottom:3px">${a.conf}% CONF</div>
+        <div style="height:4px;background:#1e293b;border-radius:2px"><div style="height:100%;width:${a.conf}%;background:${fc(a.conf)};border-radius:2px"></div></div>
+      </div>
+      ${resHtml(a.resultado)}
+    </div>`).join("");
+}
+
+// Renderizar performance na primeira vez que a aba for aberta
+// (a aba é renderizada sob demanda no clique)
+</script>
+</body>
+</html>
