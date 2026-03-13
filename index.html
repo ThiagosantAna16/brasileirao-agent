@@ -4,21 +4,21 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>⚽ BRAgent — Apostas 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Barlow:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#05080e;--bg2:#090d15;--bg3:#0c1220;--bg4:#060a10;
-  --border:#141e30;--border2:#0d1525;--border3:#1a2740;
-  --text:#c8d8f0;--text2:#8899b8;--text3:#556070;--text4:#2e3e55;
-  --green:#00e676;--green2:#00c853;--red:#ff1744;--red2:#d50000;
-  --gold:#ffd600;--blue:#2979ff;--purple:#aa00ff;--cyan:#00e5ff;
-  --orange:#ff6d00;
+  --bg:#080c18;--bg2:#0c1120;--bg3:#101828;--bg4:#060810;
+  --border:#0d1a2a;--border2:#091220;--border3:#122030;
+  --text:#c8d8e8;--text2:#4a6a7a;--text3:#2a4050;--text4:#162030;
+  --green:#00e676;--green2:#00ff88;--red:#ff1744;--red2:#d50000;
+  --gold:#ccff00;--blue:#00bfa5;--purple:#aa00ff;--cyan:#00e5ff;
+  --orange:#00d9a0;
   --bra:#009c3b;--bra2:#ffdf00;
   --epl:#3d0070;--epl2:#c0a400;
   --ucl:#0033a0;--ucl2:#c9aa71;
 }
-body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
 ::-webkit-scrollbar{width:2px;height:2px}
 ::-webkit-scrollbar-thumb{background:#1a2740}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -38,19 +38,20 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 
 /* ── TOPBAR ── */
 #topbar{
-  background:linear-gradient(90deg,#030609 0%,#07100a 40%,#050808 100%);
+  background:linear-gradient(90deg,#060810 0%,#080c18 50%,#060d10 100%);
   border-bottom:1px solid var(--border3);
+  border-top:2px solid var(--green);
   position:sticky;top:0;z-index:100;
 }
 #topbar-inner{max-width:1400px;margin:0 auto;padding:0 24px}
 #topbar-row{display:flex;align-items:center;height:52px;gap:16px}
-.logo-mark{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#fff;line-height:1}
+.logo-mark{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:26px;letter-spacing:2px;color:#fff;line-height:1}
 .logo-mark span{color:var(--green)}
 .comp-switcher{display:flex;gap:4px;margin:0 8px}
 .comp-btn{
   background:transparent;border:1px solid var(--border3);cursor:pointer;
   padding:5px 14px;border-radius:3px;font-size:10px;font-weight:600;
-  letter-spacing:1.5px;font-family:'IBM Plex Mono',monospace;
+  letter-spacing:1.5px;font-family:'Inter',sans-serif;
   color:var(--text3);transition:all .15s;white-space:nowrap;
 }
 .comp-btn:hover{color:var(--text2);border-color:var(--border3)}
@@ -70,7 +71,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 #tabrow-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;gap:0;overflow-x:auto}
 #tabrow-inner::-webkit-scrollbar{height:0}
 .tab{background:transparent;border:none;cursor:pointer;padding:9px 16px;font-size:10px;
-  font-weight:600;letter-spacing:1.5px;font-family:'IBM Plex Mono',monospace;
+  font-weight:600;letter-spacing:1.5px;font-family:'Inter',sans-serif;
   color:var(--text4);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{color:var(--text2)}
 .tab.active{color:var(--green);border-bottom-color:var(--green)}
@@ -92,7 +93,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .comp-header.ucl{background:rgba(0,51,160,.06);border-color:rgba(201,170,113,.2)}
 .comp-header.ucl::before{background:linear-gradient(180deg,var(--ucl),var(--ucl2))}
 .comp-flag{font-size:28px;line-height:1}
-.comp-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:#fff}
+.comp-name{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:24px;letter-spacing:2px;color:#fff}
 .comp-sub{font-size:9px;color:var(--text3);letter-spacing:2px;margin-top:2px}
 
 /* ── KPI GRID ── */
@@ -100,7 +101,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .kpi{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:12px 14px;position:relative;overflow:hidden}
 .kpi::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--kpi-color,transparent)}
 .kpi-lbl{font-size:7px;color:var(--text4);letter-spacing:2.5px;margin-bottom:5px;font-weight:600}
-.kpi-val{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;line-height:1}
+.kpi-val{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:26px;letter-spacing:1px;line-height:1}
 .kpi-sub{font-size:8px;color:var(--text3);margin-top:3px}
 
 /* ── CARD ── */
@@ -110,9 +111,9 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 
 /* ── BILHETE ── */
 .bilhete-wrap{
-  background:linear-gradient(155deg,#080015,#0c0025,#050015);
-  border:1px solid rgba(201,170,113,.15);border-radius:12px;overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  background:linear-gradient(155deg,#060a14,#080e1c,#06100e);
+  border:1px solid rgba(0,230,118,.15);border-radius:12px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.85),0 0 30px rgba(0,230,118,.05);
   width:100%;max-width:440px;
 }
 .bil-header{
@@ -123,15 +124,15 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .bil-header.bra{border-color:var(--bra);background:linear-gradient(135deg,rgba(0,156,59,.15),transparent)}
 .bil-header.epl{border-color:#7b2fbe;background:linear-gradient(135deg,rgba(61,0,112,.25),transparent)}
 .bil-header.ucl{border-color:var(--ucl2);background:linear-gradient(135deg,rgba(0,51,160,.2),transparent)}
-.betano-txt{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#fff}
-.betano-txt span{color:#f5a623}
+.betano-txt{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:26px;letter-spacing:2px;color:#fff}
+.betano-txt span{color:var(--green)}
 .comp-badge-bil{font-size:8px;letter-spacing:2px;padding:3px 8px;border-radius:2px;font-weight:700}
 
 .bil-sel{padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.04)}
 .bil-sel-game{font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:3px}
 .bil-sel-pick{font-size:13px;font-weight:600;color:#f0f4ff;margin-bottom:4px}
 .bil-sel-mkt{font-size:9px;color:rgba(255,255,255,.3)}
-.bil-sel-odd{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px}
+.bil-sel-odd{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:22px;letter-spacing:1px}
 
 .bil-total{padding:11px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)}
 .bil-stk{padding:14px 20px}
@@ -140,7 +141,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
   font-family:inherit;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04);
   color:var(--text4);transition:all .12s}
 .stk-btn:hover{color:var(--text2)}
-.stk-btn.active{background:#f5a623;border-color:#f5a623;color:#000}
+.stk-btn.active{background:var(--green);border-color:var(--green);color:#000}
 .ret-box{border-radius:6px;padding:12px 14px}
 .ret-box.bra{background:rgba(0,156,59,.06);border:1px solid rgba(0,156,59,.15)}
 .ret-box.epl{background:rgba(123,47,190,.06);border:1px solid rgba(123,47,190,.2)}
@@ -179,8 +180,8 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospac
 .odd-edit-wrap{display:flex;align-items:center;gap:4px}
 .odd-edit-btn{background:none;border:none;color:var(--text4);cursor:pointer;font-size:11px;padding:0 2px;line-height:1;font-family:inherit;transition:color .1s}
 .odd-edit-btn:hover{color:var(--text2)}
-.odd-input{background:transparent;border:none;border-bottom:1px solid rgba(245,166,35,.4);color:#f5a623;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;width:58px;text-align:right;outline:none;padding:0}
-.odd-input:focus{border-bottom-color:#f5a623}
+.odd-input{background:transparent;border:none;border-bottom:1px solid rgba(0,230,118,.4);color:var(--green);font-family:'Rajdhani',sans-serif;font-weight:700;font-size:22px;letter-spacing:1px;width:58px;text-align:right;outline:none;padding:0}
+.odd-input:focus{border-bottom-color:var(--green)}
 .comp-flag{display:inline-block;font-size:8px;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;font-weight:700;letter-spacing:.5px}
 .comp-flag.bra{background:rgba(0,156,59,.15);color:var(--bra);border:1px solid rgba(0,156,59,.3)}
 .comp-flag.epl{background:rgba(123,47,190,.15);color:#c084fc;border:1px solid rgba(123,47,190,.3)}
@@ -201,14 +202,14 @@ table{width:100%;border-collapse:collapse;font-size:11px}
 th{padding:8px 10px;color:var(--text4);font-size:8px;font-weight:700;letter-spacing:2px;text-align:center}
 td{padding:9px 10px;text-align:center}
 tbody tr{border-bottom:1px solid var(--border2);transition:background .1s}
-tbody tr:hover{background:#0a1220}
+tbody tr:hover{background:#0a1830}
 .forma-dot{width:14px;height:14px;border-radius:2px;display:inline-flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:#000}
 
 /* ── JOGO ROW ── */
 .jrow{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:11px 14px;
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:7px;transition:all .12s}
-.jrow:hover{background:#0a1525;border-color:var(--border3)}
-.jrow.star{border-color:rgba(255,214,0,.2)}
+.jrow:hover{background:#0a1830;border-color:rgba(0,230,118,.15)}
+.jrow.star{border-color:rgba(0,230,118,.25);box-shadow:0 0 8px rgba(0,230,118,.06)}
 .st-badge{min-width:60px;padding:2px 6px;border-radius:2px;text-align:center;font-size:7px;font-weight:700;letter-spacing:1.5px}
 
 /* ── HIST ── */
@@ -225,7 +226,7 @@ tbody tr:hover{background:#0a1220}
 .cal-dh{font-size:7px;color:var(--text4);text-align:center;padding:2px 0;letter-spacing:1px}
 .cal-day{min-height:48px;border-radius:4px;border:1px solid var(--border2);padding:3px 4px;font-size:7px;background:var(--bg3)}
 .cal-day.empty{background:transparent;border-color:transparent}
-.cal-day.has-g{border-color:#1a3a5c;background:#08142a;cursor:pointer}
+.cal-day.has-g{border-color:#0d2a1a;background:#071510;cursor:pointer}
 .cal-day.g-green{border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.04)}
 .cal-day.g-red{border-color:rgba(255,23,68,.3);background:rgba(255,23,68,.04)}
 .cal-dot{display:inline-block;width:4px;height:4px;border-radius:50%;margin:1px}
@@ -249,7 +250,7 @@ tbody tr:hover{background:#0a1220}
 .alert{background:rgba(255,23,68,.03);border:1px solid rgba(255,23,68,.1);border-radius:6px;padding:12px 14px;font-size:9px;color:var(--text3);line-height:1.9}
 .seq-row{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--border2)}
 .seq-row:last-child{border-bottom:none}
-.seq-val{font-size:10px;font-weight:700;color:var(--gold);background:rgba(255,214,0,.06);border:1px solid rgba(255,214,0,.12);padding:2px 8px;border-radius:3px;margin-left:10px;white-space:nowrap}
+.seq-val{font-size:10px;font-weight:700;color:var(--green);background:rgba(0,230,118,.06);border:1px solid rgba(0,230,118,.18);padding:2px 8px;border-radius:3px;margin-left:10px;white-space:nowrap}
 .divider{height:1px;background:var(--border);margin:16px 0}
 .section-label{font-size:8px;color:var(--text4);letter-spacing:3px;font-weight:700;margin-bottom:10px}
 .empty-state{text-align:center;padding:28px;color:var(--text4);font-size:11px;border:1px dashed var(--border);border-radius:6px}
@@ -273,11 +274,11 @@ tbody tr:hover{background:#0a1220}
 .snav-item{
   display:flex;align-items:center;gap:10px;padding:9px 14px;cursor:pointer;
   font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--text3);
-  font-family:'IBM Plex Mono',monospace;transition:all .15s;white-space:nowrap;
+  font-family:'Inter',sans-serif;transition:all .15s;white-space:nowrap;
   border:none;background:none;width:100%;text-align:left;border-left:2px solid transparent;
 }
 .snav-item:hover{color:var(--text2);background:rgba(255,255,255,.02)}
-.snav-item.active{color:var(--green);border-left-color:var(--green);background:rgba(0,230,118,.04)}
+.snav-item.active{color:var(--green);border-left-color:var(--green);background:rgba(0,230,118,.07);box-shadow:inset 3px 0 8px rgba(0,230,118,.1)}
 .snav-icon{font-size:12px;min-width:16px;text-align:center;flex-shrink:0}
 .snav-label{overflow:hidden;transition:opacity .15s,max-width .18s;white-space:nowrap;max-width:140px}
 #sidebar.collapsed .snav-label{opacity:0;max-width:0}
@@ -292,7 +293,7 @@ tbody tr:hover{background:#0a1220}
 .snav-toggle{
   background:none;border:none;cursor:pointer;color:var(--text4);margin-top:auto;
   padding:9px 14px;display:flex;align-items:center;gap:10px;width:100%;
-  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;transition:color .15s;
+  font-family:'Inter',sans-serif;font-size:9px;letter-spacing:1px;transition:color .15s;
   border-top:1px solid var(--border);white-space:nowrap;
 }
 .snav-toggle:hover{color:var(--text2)}
@@ -304,11 +305,11 @@ tbody tr:hover{background:#0a1220}
 .search-wrap{position:relative;margin-right:4px}
 .search-input{
   background:rgba(255,255,255,.04);border:1px solid var(--border3);border-radius:4px;
-  color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;
+  color:var(--text);font-family:'Inter',sans-serif;font-size:10px;
   padding:5px 8px 5px 26px;width:150px;outline:none;transition:width .2s,border-color .15s;
 }
 .search-input::placeholder{color:var(--text4)}
-.search-input:focus{border-color:var(--green);width:200px;background:rgba(0,230,118,.03)}
+.search-input:focus{border-color:var(--green);width:200px;background:rgba(0,230,118,.05);box-shadow:0 0 0 2px rgba(0,230,118,.08)}
 .search-ico{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--text4);pointer-events:none}
 .sdropdown{
   position:absolute;top:calc(100% + 5px);left:0;width:260px;z-index:400;
@@ -343,7 +344,7 @@ tbody tr:hover{background:#0a1220}
 .ndrop-clear:hover{color:var(--text2)}
 .nitem{padding:9px 14px;border-bottom:1px solid var(--border2);cursor:pointer;transition:background .1s}
 .nitem:hover{background:rgba(255,255,255,.03)}
-.nitem.unread{background:rgba(0,230,118,.025)}
+.nitem.unread{background:rgba(0,230,118,.045)}
 .nitem:last-child{border-bottom:none}
 .nitem-type{font-size:7px;font-weight:700;letter-spacing:1.5px;margin-bottom:3px}
 .nitem-type.green{color:var(--green)}
@@ -368,14 +369,14 @@ tbody tr:hover{background:#0a1220}
 .ft-bar{flex:1;height:3px;background:var(--border3);border-radius:2px;overflow:hidden}
 .ft-bar-fill{height:100%;border-radius:2px;transition:width .6s ease}
 .ft-foot{display:flex;justify-content:space-between;align-items:center;margin-top:2px}
-.ft-odd-val{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--gold)}
+.ft-odd-val{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:17px;color:var(--green)}
 .ft-conf{font-size:9px;font-weight:700}
 .ft-sep{height:1px;background:var(--border);flex-shrink:0}
-.ft-total{background:rgba(255,214,0,.04);border:1px solid rgba(255,214,0,.12);border-radius:6px;padding:10px 12px;flex-shrink:0}
+.ft-total{background:rgba(0,230,118,.04);border:1px solid rgba(0,230,118,.15);border-radius:6px;padding:10px 12px;flex-shrink:0}
 .ft-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
 .ft-total-row:last-child{margin-bottom:0;padding-top:6px;border-top:1px solid rgba(255,255,255,.05);margin-top:4px}
 .ft-tl{font-size:9px;color:var(--text3)}
-.ft-tv{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold)}
+.ft-tv{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:var(--green)}
 .ft-tv-green{font-size:11px;font-weight:700;color:var(--green)}
 @media(max-width:1200px){#fixed-ticket{display:none!important}}
 
@@ -549,7 +550,7 @@ tbody tr:hover{background:#0a1220}
 <div id="sec-performance" class="page-section">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
     <div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#fff">PERFORMANCE & BANKROLL</div>
+      <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:#fff">PERFORMANCE & BANKROLL</div>
       <div style="font-size:8px;color:var(--text4);letter-spacing:2px;margin-top:2px">BANKROLL: R$2/BILHETE • <span id="perf-comp-lbl">BRASILEIRÃO</span></div>
     </div>
     <div style="display:flex;gap:5px" id="perf-mes-sel"></div>
@@ -1320,7 +1321,7 @@ function renderBilhete(C){
           <div style="font-size:7px;color:rgba(255,255,255,.2);letter-spacing:2px;margin-top:2px">SIMULAÇÃO DE BILHETE</div>
         </div>
         <div style="text-align:right">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:${tipoColor}">${tipoLabel}</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;color:${tipoColor}">${tipoLabel}</div>
           <div style="font-size:7px;color:rgba(255,255,255,.2);margin-top:1px;letter-spacing:1px">${tipoSub}</div>
         </div>
       </div>
@@ -1346,7 +1347,7 @@ function renderBilhete(C){
         <span style="font-size:9px;color:rgba(255,255,255,.25)">MÚLTIPLA • ${sels.length} SELEÇÕES</span>
         <div>
           <div style="font-size:7px;color:rgba(255,255,255,.2);letter-spacing:1px;text-align:right">ODD TOTAL</div>
-          <div id="bil-odd-total" style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:#f5a623">${oddTotal.toFixed(2)}</div>
+          <div id="bil-odd-total" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:26px;letter-spacing:1px;color:#f5a623">${oddTotal.toFixed(2)}</div>
         </div>
       </div>
       <div class="bil-stk">
@@ -1365,7 +1366,7 @@ function renderBilhete(C){
           </div>
           <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:8px;display:flex;justify-content:space-between;align-items:center;margin-top:6px">
             <span style="font-size:10px;color:#f5a623;font-weight:700">RETORNO TOTAL</span>
-            <span id="bil-ret-total" style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:#f5a623">R$ ${fmt(ret)}</span>
+            <span id="bil-ret-total" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:28px;letter-spacing:1px;color:#f5a623">R$ ${fmt(ret)}</span>
           </div>
         </div>
         <div style="margin-top:8px;font-size:7px;color:rgba(255,255,255,.1);text-align:center;line-height:1.8">⚠️ SIMULAÇÃO APENAS • JOGUE COM RESPONSABILIDADE • 18+</div>
@@ -1389,7 +1390,7 @@ function renderBilhete(C){
           <div style="font-size:8px;color:var(--text4);margin-top:1px">${a.mercado}</div>
         </div>
         <div style="text-align:right">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)">${getOdd(tipo,i).toFixed(2)}</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:20px;color:var(--gold)">${getOdd(tipo,i).toFixed(2)}</div>
           <div style="font-size:11px;color:${fc(a.conf)};font-weight:700">${a.conf}%</div>
         </div>
       </div>
@@ -1412,9 +1413,9 @@ function renderBilhete(C){
   $("bil-resumo-box").innerHTML=`
     <div style="background:rgba(255,214,0,.04);border:1px solid rgba(255,214,0,.12);border-radius:6px;padding:12px 14px;margin-top:4px">
       <div style="font-size:8px;color:var(--gold);letter-spacing:2px;margin-bottom:8px">RESUMO DO BILHETE</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:10px;color:var(--text3)">Odd combinada</span><span id="bil-resumo-odd" style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold)">${oddTotal.toFixed(2)}×</span></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:10px;color:var(--text3)">Odd combinada</span><span id="bil-resumo-odd" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:var(--gold)">${oddTotal.toFixed(2)}×</span></div>
       <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:10px;color:var(--text3)">Confiança média</span><span style="font-size:12px;color:${fc(confMedia)};font-weight:700">${confMedia}%</span></div>
-      <div style="display:flex;justify-content:space-between"><span style="font-size:10px;color:var(--text3)">R$2 vira</span><span id="bil-resumo-r2" style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green)">R$ ${fmt(2*oddTotal)}</span></div>
+      <div style="display:flex;justify-content:space-between"><span style="font-size:10px;color:var(--text3)">R$2 vira</span><span id="bil-resumo-r2" style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:18px;color:var(--green)">R$ ${fmt(2*oddTotal)}</span></div>
     </div>`;
 }
 
@@ -1440,8 +1441,8 @@ function renderJogos(C){
         <div style="font-size:12px;font-weight:600;color:${j.star?"var(--gold)":"var(--text2)"}">${j.aposta}</div>
       </div>
       <div style="display:flex;gap:12px">
-        <div style="text-align:center"><div style="font-size:7px;color:var(--text4);letter-spacing:1px">ODD</div><div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold)">${j.odd.toFixed(2)}</div></div>
-        <div style="text-align:center"><div style="font-size:7px;color:var(--text4);letter-spacing:1px">CONF</div><div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:${fc(j.conf)}">${j.conf}%</div></div>
+        <div style="text-align:center"><div style="font-size:7px;color:var(--text4);letter-spacing:1px">ODD</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:20px;color:var(--gold)">${j.odd.toFixed(2)}</div></div>
+        <div style="text-align:center"><div style="font-size:7px;color:var(--text4);letter-spacing:1px">CONF</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:20px;color:${fc(j.conf)}">${j.conf}%</div></div>
       </div>
     </div>`;}).join("");
 }
@@ -1488,8 +1489,8 @@ function renderTabela(C){
 // HISTÓRICO
 function renderHistorico(C){
   $("hist-totals").innerHTML=`
-    <div><div style="font-size:7px;color:var(--text4);letter-spacing:2px">ACERTOS</div><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--text4)">—</div></div>
-    <div><div style="font-size:7px;color:var(--text4);letter-spacing:2px">RODADAS</div><div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#e0eaff">${C.historicoRodadas.length}</div></div>
+    <div><div style="font-size:7px;color:var(--text4);letter-spacing:2px">ACERTOS</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:36px;color:var(--text4)">—</div></div>
+    <div><div style="font-size:7px;color:var(--text4);letter-spacing:2px">RODADAS</div><div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:36px;color:#e0eaff">${C.historicoRodadas.length}</div></div>
     <div style="flex:1;font-size:10px;color:var(--text4);line-height:1.9">Envie os resultados:<br/><span style="color:var(--green)">"Rodada X finalizada: [time] ✓ / ✗ ..."</span></div>`;
 
   $("hist-rodadas").innerHTML=C.historicoRodadas.length===0
@@ -1497,7 +1498,7 @@ function renderHistorico(C){
     : C.historicoRodadas.map(r=>`
       <div class="rod-block">
         <div class="rod-block-hd">
-          <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#e0eaff">${r.label||"RODADA "+r.rodada}</span>
+          <span style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px;color:#e0eaff">${r.label||"RODADA "+r.rodada}</span>
           <span class="badge-sm ${r.apostas.every(a=>a.resultado)?"badge-green":"badge-red"}">${r.apostas.every(a=>a.resultado)?"✓ BILHETE GREEN":"✗ BILHETE RED"}</span>
         </div>
         ${r.apostas.map((a,i)=>`
@@ -1822,7 +1823,7 @@ function openModal(idx){
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
         <button class="modal-close-btn" onclick="closeModal()">×</button>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold);line-height:1">${a.odd.toFixed(2)}</div>
+        <div style="font-family:'Rajdhani',sans-serif;font-weight:700;font-size:28px;color:var(--gold);line-height:1">${a.odd.toFixed(2)}</div>
         <span class="badge-sm ${accentCls}">${a.resultado===null?"AGUARDA":a.resultado?"✓ GREEN":"✗ RED"}</span>
       </div>
     </div>
