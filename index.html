@@ -407,7 +407,7 @@ tbody tr:hover{background:#0a1220}
         <div class="sdropdown" id="sdropdown"></div>
       </div>
       <div id="topbar-right">
-        <span id="comp-live-badge" class="badge-sm badge-orange live">● R6 — 15/03</span>
+        <span id="comp-live-badge" class="badge-sm badge-orange live">● 13/03</span>
         <div id="notif-wrap">
           <button class="notif-btn" onclick="toggleNotif()" title="Notificações">
             🔔<span class="notif-dot" id="notif-dot"></span>
@@ -485,7 +485,7 @@ tbody tr:hover{background:#0a1220}
   <div class="two-col">
     <div>
       <div class="card">
-        <div class="card-hd"><span class="card-title">BILHETE ATIVO</span><span id="ov-bil-badge" class="badge-sm badge-gold">● R6 EM ANDAMENTO</span></div>
+        <div class="card-hd"><span class="card-title">BILHETE ATIVO</span><span id="ov-bil-badge" class="badge-sm badge-gold">● 13/03 EM ANDAMENTO</span></div>
         <div id="ov-apostas"></div>
         <div style="padding:9px 16px;background:var(--bg4);display:flex;justify-content:space-between">
           <span style="font-size:9px;color:var(--text3)" id="ov-bil-info">—</span>
@@ -616,7 +616,7 @@ const COMPS = {
 
   bra: {
     id:"bra", name:"BRASILEIRÃO SÉRIE A", flag:"🇧🇷", season:"2026", rodada:"6ª",
-    liveBadge:"● R6 — 15/03",
+    liveBadge:"● 13/03",
     accentColor:"var(--bra)", accentColor2:"var(--bra2)",
     cls:"bra",
 
@@ -1151,112 +1151,114 @@ const oddOverrides = { single:{}, dupla:{}, bingo:{} };
 const BILHETE_DATA = {
   single:[
     {
-      jogo:"São Paulo x Red Bull Bragantino", comp:"bra", compLabel:"🇧🇷 BRA",
-      selecao:"São Paulo — Vence", mercado:"Resultado Final",
-      odd:1.95, conf:82, resultado:null, placar:null, data:"15/03",
+      jogo:"Mönchengladbach x St. Pauli", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Mönchengladbach — Vence", mercado:"Resultado Final",
+      odd:2.08, conf:72, resultado:null, placar:null, data:"13/03",
       analise:{
         favoravel:[
-          "São Paulo lidera o Brasileirão 2026 com 13 pontos",
-          "Roger Machado estreou com 2×0 — time embalado",
-          "100% como mandante 2026: 4V 0E 0D no Morumbi",
-          "Bragantino com 2 suspensos no meio (Alix Vinicius + Fabinho)"
+          "Gladbach em casa no Borussia-Park — ambiente favorável em jogo de pressão",
+          "St. Pauli é o pior visitante da Bundesliga — 4 derrotas nos últimos 5 fora",
+          "Jogo de 6 pontos: Gladbach tem 1pt de vantagem e precisa abrir — vai atacar",
+          "Torcida do Gladbach em casa é fator decisivo nesse tipo de confronto"
         ],
-        risco:["Bragantino sólido fora de casa","SP pode poupar peças"],
-        mercados:["Resultado Final","Dupla Chance","Total de Gols"]
+        risco:[
+          "Empate é possível — ambos sob pressão do rebaixamento",
+          "St. Pauli pode travar e esperar contra-ataque"
+        ],
+        mercados:["Resultado Final","Dupla Chance","Over 2.5","Handicap"]
       }
     }
   ],
   dupla:[
     {
-      jogo:"Fluminense x Botafogo", comp:"bra", compLabel:"🇧🇷 BRA",
-      selecao:"Fluminense — Dupla Chance (1X)", mercado:"Dupla Chance",
-      odd:1.42, conf:78, resultado:null, placar:null, data:"15/03",
+      jogo:"Torino x Parma", comp:"ita", compLabel:"🇮🇹 ITA",
+      selecao:"Torino — Vence", mercado:"Resultado Final",
+      odd:1.39, conf:78, resultado:null, placar:null, data:"13/03",
       analise:{
         favoravel:[
-          "Fluminense invicto em 4j na Série A 2026",
-          "Vitória 2×0 Remo confirmou solidez defensiva",
-          "Botafogo com apenas 3pts em 3 jogos (1V 0E 2D)",
-          "DC cobre vitória E empate — só derrota elimina"
+          "Torino é grande favorito em casa — dominante como mandante na Serie A",
+          "Parma é o pior visitante da liga — 5 derrotas nos últimos 7 fora",
+          "Parma em zona de rebaixamento (odd 6.60) — só pensa em não sofrer",
+          "H2H: Torino venceu 3 dos últimos 4 em Turim"
         ],
-        risco:["Clássico carioca — naturalmente imprevisível"],
-        mercados:["Dupla Chance","Handicap Asiático"]
+        risco:["Torino pode poupar jogadores com calendário cheio"],
+        mercados:["Resultado Final","Dupla Chance","Over 1.5"]
       }
     },
     {
-      jogo:"Arsenal x Bayer Leverkusen", comp:"ucl", compLabel:"⭐ UCL",
-      selecao:"Arsenal — Vence", mercado:"Resultado Final",
-      odd:1.55, conf:86, resultado:null, placar:null, data:"17/03",
+      jogo:"Mönchengladbach x St. Pauli", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Mönchengladbach — Vence", mercado:"Resultado Final",
+      odd:2.08, conf:72, resultado:null, placar:null, data:"13/03",
       analise:{
         favoravel:[
-          "Emirates quase invicto em casa na UCL 25/26",
-          "Arsenal 8/8 na fase de grupos — melhor europeu",
-          "Leverkusen com 7 desfalques confirmados para volta",
-          "Arsenal abriu placar em 10 jogos seguidos"
+          "Gladbach forte em casa — precisa dos 3 pontos para sair do risco",
+          "St. Pauli é o pior visitante da Bundesliga nesta temporada",
+          "Pressão da torcida em casa é decisiva em jogos de zona de rebaixamento"
         ],
-        risco:["Merino e Ødegaard lesionados","Empate na ida beneficia Leverkusen"],
-        mercados:["Resultado Final","Dupla Chance","Total de Gols"]
+        risco:["Jogo de 6 pontos pode ser tenso e travar os dois times"],
+        mercados:["Resultado Final","Dupla Chance","Over 2.5"]
       }
     }
   ],
   bingo:[
     {
-      jogo:"São Paulo x Bragantino", comp:"bra", compLabel:"🇧🇷 BRA",
-      selecao:"São Paulo vence + Over 2.5 Gols", mercado:"Vit + Over 2.5",
-      odd:2.40, conf:62, resultado:null, placar:null, data:"15/03",
+      jogo:"Torino x Parma", comp:"ita", compLabel:"🇮🇹 ITA",
+      selecao:"Torino — Vence", mercado:"Resultado Final",
+      odd:1.39, conf:78, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["SP 100% mandante 2026","Média 2.8 gols/j no Morumbi","Bragantino abre espaço fora"],
-        risco:["Bragantino pode travar o jogo"],
-        mercados:["Vit + Over 2.5","Dupla Chance"]
+        favoravel:["Grande favorito em casa","Parma em crise fora","H2H favorável ao Torino"],
+        risco:["Parma pode se fechar defensivamente"],
+        mercados:["Resultado Final","Dupla Chance"]
       }
     },
     {
-      jogo:"Fluminense x Botafogo", comp:"bra", compLabel:"🇧🇷 BRA",
-      selecao:"Ambos Marcam — Sim", mercado:"Ambos Marcam",
-      odd:1.88, conf:60, resultado:null, placar:null, data:"15/03",
+      jogo:"Torino x Parma", comp:"ita", compLabel:"🇮🇹 ITA",
+      selecao:"Over 1.5 Gols", mercado:"Total de Gols",
+      odd:1.38, conf:80, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["Botafogo marcou em 2 dos 3 jogos","Fluminense marca em 100% dos jogos","Clássico tende a abrir"],
-        risco:["Fluminense pode dominar e o Botafogo não conseguir marcar"],
-        mercados:["Ambos Marcam","Total de Gols"]
+        favoravel:["Torino marcou em 8 dos últimos 10 jogos em casa","Parma sofreu 2.2g/j fora","H2H: Over 1.5 em 9 dos últimos 10 duelos"],
+        risco:["Jogo pode ser mais fechado por importância"],
+        mercados:["Over 1.5","Total de Gols"]
       }
     },
     {
-      jogo:"Arsenal x Bayer Leverkusen", comp:"ucl", compLabel:"⭐ UCL",
-      selecao:"Arsenal vence + Ambos Marcam", mercado:"Vit + Ambos Marcam",
-      odd:2.10, conf:68, resultado:null, placar:null, data:"17/03",
+      jogo:"Mönchengladbach x St. Pauli", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Mönchengladbach — Vence", mercado:"Resultado Final",
+      odd:2.08, conf:72, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["Leverkusen precisa marcar fora — vai atacar","Arsenal marca em 100% dos jogos","Ida foi 1×1 — padrão de ambos marcarem"],
-        risco:["Arsenal pode fechar 1×0 e administrar"],
-        mercados:["Vit + Ambos Marcam","Total de Gols"]
+        favoravel:["Gladbach forte em casa","St. Pauli pior visitante da Bundesliga","Pressão da torcida"],
+        risco:["Jogo de 6 pontos pode travar"],
+        mercados:["Resultado Final","Dupla Chance"]
       }
     },
     {
-      jogo:"Liverpool x Galatasaray", comp:"ucl", compLabel:"⭐ UCL",
-      selecao:"Liverpool vence + Over 2.5 Gols", mercado:"Vit + Over 2.5",
-      odd:2.20, conf:65, resultado:null, placar:null, data:"18/03",
+      jogo:"Villarreal x Alavés", comp:"esp", compLabel:"🇪🇸 ESP",
+      selecao:"Villarreal — Vence", mercado:"Resultado Final",
+      odd:2.10, conf:68, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["Anfield: 14j invicto em todas as competições","Liverpool precisa reagir após 0×1 na ida","Galatasaray vulnerável fora de casa"],
-        risco:["Liverpool pode administrar com 1×0"],
-        mercados:["Vit + Over 2.5","Dupla Chance"]
+        favoravel:["Villarreal em boa fase na La Liga","Alavés em zona de rebaixamento, fragilizado em casa","Qualidade técnica superior do Villarreal"],
+        risco:["Alavés pressionado pela torcida pode dificultar"],
+        mercados:["Resultado Final","Dupla Chance","Over 2.5"]
       }
     },
     {
-      jogo:"Bayern Munich x Atalanta", comp:"ucl", compLabel:"⭐ UCL",
-      selecao:"Bayern vence + Over 3.5 Gols", mercado:"Vit + Over 3.5",
-      odd:2.30, conf:72, resultado:null, placar:null, data:"18/03",
+      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
+      selecao:"Auxerre — Vence", mercado:"Resultado Final",
+      odd:2.12, conf:65, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["Ida foi 6×1 — padrão de muitos gols estabelecido","Atalanta precisa atacar (precisa de 6 gols)","Allianz Arena: média 3.8g/j UCL esta temporada"],
-        risco:["Bayern pode relaxar com 5 gols de vantagem"],
-        mercados:["Over 3.5","Total de Gols","Handicap Asiático"]
+        favoravel:["Auxerre favorito mesmo fora — grande fase na Ligue 1","Marseille em crise: 1V nos últimos 6 em casa","Auxerre com 2.4g/j nos últimos 5 jogos"],
+        risco:["Jogar no Vélodrome ainda é difícil","Odd alta para visitante — risco real de empate"],
+        mercados:["Resultado Final","Dupla Chance"]
       }
     },
     {
-      jogo:"Chelsea x PSG", comp:"ucl", compLabel:"⭐ UCL",
-      selecao:"Mais de 2.5 Gols", mercado:"Total de Gols",
-      odd:1.72, conf:68, resultado:null, placar:null, data:"17/03",
+      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
+      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
+      odd:1.72, conf:67, resultado:null, placar:null, data:"13/03",
       analise:{
-        favoravel:["Chelsea 4×1 na última rodada da PL — fase goleadora","PSG ofensivo — média 3.1g/j na UCL","Stamford Bridge: Chelsea marcou em 12j seguidos"],
-        risco:["Jogo de UCL pode ser mais cauteloso"],
-        mercados:["Over 2.5","Ambos Marcam","Total de Gols"]
+        favoravel:["Marseille vai atacar por necessidade","Auxerre fase goleadora — média 2.4g/j","H2H: Over 2.5 em 6 dos últimos 8 confrontos"],
+        risco:["Marseille pode fechar se sair na frente"],
+        mercados:["Over 2.5","Ambos Marcam"]
       }
     }
   ]
@@ -1308,7 +1310,7 @@ function renderBilhete(C){
   const tipoColor=tipo==="single"?"var(--cyan)":tipo==="dupla"?"var(--gold)":"#cc66ff";
   const tipoRGB=tipo==="single"?"0,229,255":tipo==="dupla"?"255,214,0":"170,0,255";
   const tipoLabel=tipo==="single"?"JOGO ÚNICO":tipo==="dupla"?"DUPLA":"BINGO";
-  const tipoSub=tipo==="single"?"ODD ALVO 1.80–2.20":tipo==="dupla"?"ODD ALVO 2.50–3.80":"ODD ALVO 20–40";
+  const tipoSub="JOGOS DO DIA — 13/03";
 
   $("bilhete-card-wrap").innerHTML=`
     <div class="bilhete-wrap" style="border-color:rgba(${tipoRGB},.2)">
@@ -1752,8 +1754,8 @@ if(searchInput){
 // ════════════════════════════════════════
 // NOTIFICATIONS
 let notifications = [
-  { type:"gold", typeLabel:"BILHETE ATIVO", msg:"R6 em andamento — São Paulo, Fluminense DC e Palmeiras DC no bilhete.", time:"Hoje 09:00", unread:true },
-  { type:"green", typeLabel:"NOVA ANÁLISE", msg:"Arsenal vs Leverkusen (UCL) — confiança 86%. Análise disponível no bilhete.", time:"Ontem 22:30", unread:true },
+  { type:"gold", typeLabel:"BILHETE ATIVO", msg:"13/03 em andamento — Mönchengladbach, Torino e 4 seleções no bingo cross-competition.", time:"Hoje 09:00", unread:true },
+  { type:"green", typeLabel:"NOVA ANÁLISE", msg:"Bundesliga: Mönchengladbach vs St. Pauli — confiança 72%. Jogo de 6 pontos.", time:"Hoje 08:30", unread:true },
   { type:"red", typeLabel:"RED ANTERIOR", msg:"R5 — Palmeiras DC perdeu: Vasco 2×1 Palmeiras. Bilhete RED.", time:"12/03 21:45", unread:false },
 ];
 
