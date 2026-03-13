@@ -637,7 +637,7 @@ body.light .hora-badge{background:rgba(37,99,235,.08);border-color:rgba(37,99,23
             <div id="notif-list"><div class="ndrop-empty">Sem notificações no momento</div></div>
           </div>
         </div>
-        <span id="ts-display">12/03/2026 09:00</span>
+        <span id="ts-display">13/03/2026 09:00</span>
         <button id="theme-toggle" onclick="toggleTheme()" title="Alternar tema">☀️ CLARO</button>
       </div>
     </div>
@@ -728,13 +728,13 @@ body.light .hora-badge{background:rgba(37,99,235,.08);border-color:rgba(37,99,23
 <div id="sec-bilhete" class="page-section">
   <div class="bil-tipos">
     <button class="bil-tipo-btn single active" onclick="switchBilTipo('single')">
-      🎯 JOGO ÚNICO<div class="bil-tipo-label">ODD 1.80 → 2.20</div>
+      🎯 JOGO ÚNICO<div class="bil-tipo-label">ODD ~2.15</div>
     </button>
     <button class="bil-tipo-btn dupla" onclick="switchBilTipo('dupla')">
-      ⚡ DUPLA<div class="bil-tipo-label">ODD 2.50 → 3.80</div>
+      ⚡ DUPLA<div class="bil-tipo-label">ODD ~2.02</div>
     </button>
     <button class="bil-tipo-btn bingo" onclick="switchBilTipo('bingo')">
-      🎰 BINGO<div class="bil-tipo-label">ODD 20 → 40</div>
+      🎰 BINGO<div class="bil-tipo-label">ODD ~15×</div>
     </button>
   </div>
   <div class="bil-layout">
@@ -2158,8 +2158,8 @@ if(searchInput){
 // ════════════════════════════════════════
 // NOTIFICATIONS
 let notifications = [
-  { type:"gold", typeLabel:"BILHETE ATIVO", msg:"13/03 em andamento — Mönchengladbach, Torino e 4 seleções no bingo cross-competition.", time:"Hoje 09:00", unread:true },
-  { type:"green", typeLabel:"NOVA ANÁLISE", msg:"Bundesliga: Mönchengladbach vs St. Pauli — confiança 72%. Jogo de 6 pontos.", time:"Hoje 08:30", unread:true },
+  { type:"gold", typeLabel:"BILHETE ATIVO", msg:"13/03 — 6 seleções no Bingo (ITA+FRA+ESP) · Dupla Torino+Marseille · Single Villarreal. Odd Bingo ~15×.", time:"Hoje 09:00", unread:true },
+  { type:"green", typeLabel:"CORREÇÃO v2", msg:"Mönchengladbach e Auxerre vence removidos — dados reais mostram crise de forma. Bingo revisado com picks de maior qualidade.", time:"Hoje 08:30", unread:true },
   { type:"red", typeLabel:"RED ANTERIOR", msg:"R5 — Palmeiras DC perdeu: Vasco 2×1 Palmeiras. Bilhete RED.", time:"12/03 21:45", unread:false },
 ];
 
