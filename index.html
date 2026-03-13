@@ -624,7 +624,7 @@ body.light .hora-badge{background:rgba(37,99,235,.08);border-color:rgba(37,99,23
         <div class="sdropdown" id="sdropdown"></div>
       </div>
       <div id="topbar-right">
-        <span id="comp-live-badge" class="badge-sm badge-orange live">● 13/03</span>
+        <span id="comp-live-badge" class="badge-sm badge-orange live">● 14/03</span>
         <div id="notif-wrap">
           <button class="notif-btn" onclick="toggleNotif()" title="Notificações">
             🔔<span class="notif-dot" id="notif-dot"></span>
@@ -930,6 +930,30 @@ const COMPS = {
     ],
 
     historicoRodadas:[
+      {
+        label:"13/03 — SINGLE", valor:2,
+        apostas:[
+          {jogo:"Alavés x Villarreal", selecao:"Villarreal — Vence", odd:2.15, resultado:false, placar:"1×1"},
+        ]
+      },
+      {
+        label:"13/03 — DUPLA", valor:2,
+        apostas:[
+          {jogo:"Marseille x Auxerre",    selecao:"Marseille — Vence", odd:1.45, resultado:true, placar:"1×0"},
+          {jogo:"Al-Qadsiah x Al-Ahli",  selecao:"Over 2.5 Gols",     odd:1.80, resultado:true, placar:"3×2"},
+        ]
+      },
+      {
+        label:"13/03 — BINGO", valor:2,
+        apostas:[
+          {jogo:"Karagumruk x Fenerbahçe",    selecao:"Over 2.5 Gols",       odd:1.70, resultado:false, placar:"2×0"},
+          {jogo:"Al-Qadsiah x Al-Ahli",       selecao:"Over 2.5 Gols",       odd:1.80, resultado:true,  placar:"3×2"},
+          {jogo:"Mönchengladbach x St. Pauli",selecao:"Ambos Marcam — SIM",  odd:1.80, resultado:false, placar:"2×0"},
+          {jogo:"Torino x Parma",             selecao:"Torino — Vence",      odd:1.39, resultado:true,  placar:"4×1"},
+          {jogo:"Marseille x Auxerre",        selecao:"Marseille — Vence",   odd:1.45, resultado:true,  placar:"1×0"},
+          {jogo:"Alavés x Villarreal",        selecao:"Villarreal — Vence",  odd:2.15, resultado:false, placar:"1×1"},
+        ]
+      },
       {
         rodada:5, valor:2, oddTotal:3.35, retornoPotencial:6.70,
         resultado:"RED", pl:-2.00,
@@ -1393,151 +1417,35 @@ const BILHETE_DATA = {
 
   single:[
     {
-      jogo:"Alavés x Villarreal", comp:"esp", compLabel:"🇪🇸 ESP",
-      selecao:"Villarreal — Vence", mercado:"Resultado Final",
-      odd:2.15, conf:68, resultado:null, placar:null, data:"13/03", hora:"17h00",
-      analise:{
-        favoravel:[
-          "Villarreal em 4º lugar com 54pts — 3 vitórias nos últimos 4 jogos na La Liga",
-          "Alavés em 16º lugar — 5 jogos seguidos sem vencer, em zona de rebaixamento",
-          "Último H2H (jan/26): Villarreal ganhou 3×1 na casa do Alavés",
-          "Ataque intacto: Mikautadze, Ayoze Pérez, Moleiro — média 1.85 gols/jogo"
-        ],
-        risco:[
-          "Villarreal tem só 1 vitória nos últimos 6 jogos fora de casa",
-          "Mendizorroza é difícil — Alavés não saiu perdendo no intervalo em 19 dos últimos 20 jogos em casa"
-        ],
-        mercados:["Resultado Final","Dupla Chance","Ambos Marcam","Over 2.5"]
-      }
+      jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳",
+      selecao:"—", mercado:"—",
+      odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—",
+      analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] }
     }
   ],
 
   dupla:[
     {
-      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
-      selecao:"Marseille — Vence", mercado:"Resultado Final",
-      odd:1.45, conf:80, resultado:null, placar:null, data:"13/03", hora:"16h45",
-      analise:{
-        favoravel:[
-          "Marseille invicto em casa sob Habib Beye — 3º lugar (46pts)",
-          "Auxerre: 0 gols marcados fora de casa em 2026 inteiro na Ligue 1",
-          "Sinayoko suspenso + Kiala fora — ataque do Auxerre sem seus dois principais nomes",
-          "Como visitante nos últimos 10: 1V 4E 5D — marcou em só 3 jogos"
-        ],
-        risco:["Auxerre pode fechar o jogo e arrancar um 0×0"],
-        mercados:["Resultado Final","Handicap"]
-      }
+      jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳",
+      selecao:"—", mercado:"—",
+      odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—",
+      analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] }
     },
     {
-      jogo:"Al-Qadsiah x Al-Ahli", comp:"sau", compLabel:"🇸🇦 SAU",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.80, conf:74, resultado:null, placar:null, data:"13/03", hora:"16h00",
-      analise:{
-        favoravel:[
-          "Over 2.5 em 17 dos 25 jogos do Al-Qadsiah na liga (68%)",
-          "Al-Ahli: marcou em todos os últimos 6 jogos — Ivan Toney com 24 gols",
-          "Último H2H desta temporada: Al-Ahli venceu por 5×1 — padrão de jogo aberto",
-          "Ambos os times com médias acima de 2.2 gols/jogo — dois dos melhores ataques da liga"
-        ],
-        risco:["Jogo pelo topo — pode ser mais controlado taticamente"],
-        mercados:["Over 2.5","Ambos Marcam","Total de Gols"]
-      }
+      jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳",
+      selecao:"—", mercado:"—",
+      odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—",
+      analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] }
     }
   ],
 
   bingo:[
-    {
-      jogo:"Karagumruk x Fenerbahçe", comp:"tur", compLabel:"🇹🇷 TUR",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.70, conf:78, resultado:null, placar:null, data:"13/03", hora:"14h00",
-      analise:{
-        favoravel:[
-          "Fenerbahçe único invicto da liga — 16V 9E — 2º lugar a 4pts do líder",
-          "Karagumruk lanterna com a pior defesa (46 gols sofridos)",
-          "8 dos últimos 9 jogos do Fenerbahçe tiveram Over 2.5 gols",
-          "Todos os 5 últimos H2H entre as equipes tiveram Over 2.5"
-        ],
-        risco:["Fenerbahçe pode controlar o jogo e não arriscar"],
-        mercados:["Over 2.5","Fenerbahçe Vence","Total de Gols"]
-      }
-    },
-    {
-      jogo:"Al-Qadsiah x Al-Ahli", comp:"sau", compLabel:"🇸🇦 SAU",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.80, conf:74, resultado:null, placar:null, data:"13/03", hora:"16h00",
-      analise:{
-        favoravel:[
-          "Over 2.5 em 17 dos 25 jogos do Al-Qadsiah nesta liga (68%)",
-          "Ambos os times com média acima de 2.2 gols/jogo — dois dos melhores ataques da Saudi Pro",
-          "Último H2H: 5×1 para o Al-Ahli — padrão histórico de jogos abertos",
-          "Ivan Toney (24g) + Quiñones (24g) — duelo entre os melhores artilheiros da liga"
-        ],
-        risco:["Jogo pelo topo — pode ser mais controlado taticamente"],
-        mercados:["Over 2.5","Ambos Marcam"]
-      }
-    },
-    {
-      jogo:"Mönchengladbach x St. Pauli", comp:"bun", compLabel:"🇩🇪 BUN",
-      selecao:"Ambos Marcam — SIM", mercado:"Ambos Marcam",
-      odd:1.80, conf:62, resultado:null, placar:null, data:"13/03", hora:"16h30",
-      analise:{
-        favoravel:[
-          "Gladbach marcou em 7 dos últimos 10 jogos em casa na Bundesliga",
-          "St. Pauli marcou em 7 dos últimos 10 jogos da temporada",
-          "Ambos precisam de pontos — jogo de sobrevivência que tende a ser aberto",
-          "H2H recente (Copa DFB, dez/25) no Borussia-Park: St. Pauli marcou e venceu 2×1"
-        ],
-        risco:[
-          "Gladbach em crise ofensiva severa — só 3 gols nos últimos 5 jogos",
-          "Jogo de 6 pontos pode travar os dois times defensivamente"
-        ],
-        mercados:["Ambos Marcam","Over 1.5"]
-      }
-    },
-    {
-      jogo:"Torino x Parma", comp:"ita", compLabel:"🇮🇹 ITA",
-      selecao:"Torino — Vence", mercado:"Resultado Final",
-      odd:1.39, conf:78, resultado:null, placar:null, data:"13/03", hora:"16h45",
-      analise:{
-        favoravel:[
-          "Torino forte mandante na Serie A 2025/26",
-          "Parma: pior visitante da Serie A — 5 derrotas nos últimos 7 fora",
-          "Parma em zona de rebaixamento (odd 6.60 para vencer) — vai se fechar",
-          "H2H: Torino venceu 3 dos últimos 4 duelos em Turim"
-        ],
-        risco:["Torino pode poupar com calendário cheio"],
-        mercados:["Resultado Final","Dupla Chance","Over 1.5"]
-      }
-    },
-    {
-      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
-      selecao:"Marseille — Vence", mercado:"Resultado Final",
-      odd:1.45, conf:80, resultado:null, placar:null, data:"13/03", hora:"16h45",
-      analise:{
-        favoravel:[
-          "Marseille invicto em casa sob Beye — 3º lugar na Ligue 1",
-          "Auxerre: 0 gols fora em 2026 — menos produtivo da liga como visitante",
-          "Sinayoko suspenso + Kiala fora — Auxerre sem atacantes titulares",
-          "Auxerre como visitante nos últimos 10: 1V 4E 5D"
-        ],
-        risco:["Auxerre pode conseguir empate defensivo 0×0"],
-        mercados:["Resultado Final","Handicap"]
-      }
-    },
-    {
-      jogo:"Alavés x Villarreal", comp:"esp", compLabel:"🇪🇸 ESP",
-      selecao:"Villarreal — Vence", mercado:"Resultado Final",
-      odd:2.15, conf:65, resultado:null, placar:null, data:"13/03", hora:"17h00",
-      analise:{
-        favoravel:[
-          "Villarreal em 4º — 3V nos últimos 4 — brigando por UCL",
-          "Alavés 5 jogos sem vencer — zona de rebaixamento",
-          "Último H2H: Villarreal ganhou 3×1 na casa do Alavés"
-        ],
-        risco:["Villarreal só 1V nos últimos 6 jogos fora — inconsistente como visitante"],
-        mercados:["Resultado Final","Dupla Chance"]
-      }
-    }
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } },
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } },
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } },
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } },
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } },
+    { jogo:"Aguardando análise 14/03", comp:"", compLabel:"⏳", selecao:"—", mercado:"—", odd:0, conf:0, resultado:null, placar:null, data:"14/03", hora:"—", analise:{ favoravel:["Análise disponível em breve"], risco:[], mercados:[] } }
   ]
 };
 
@@ -2186,8 +2094,8 @@ if(searchInput){
 // ════════════════════════════════════════
 // NOTIFICATIONS
 let notifications = [
-  { type:"gold", typeLabel:"BILHETE ATIVO", msg:"13/03 v3 — Bingo 6 jogos distintos: TUR+SAU+BUN+ITA+FRA+ESP (~23.8×) · Dupla Marseille+Over SAU (~2.61) · Single Villarreal (2.15).", time:"Hoje 09:00", unread:true },
-  { type:"green", typeLabel:"ATUALIZAÇÃO v3", msg:"Regra nova: 1 jogo = 1 seleção por bilhete, nenhum jogo se repete. Dupla atualizada: Marseille + Al-Qadsiah/Al-Ahli Over 2.5.", time:"Hoje 08:30", unread:true },
+  { type:"blue", typeLabel:"AGUARDANDO", msg:"14/03 — Análise em preparação. Single ⏳ · Dupla ⏳ · Bingo ⏳", time:"Hoje 09:00", unread:true },
+  { type:"green", typeLabel:"13/03 ENCERRADO", msg:"Single ❌ (-R$2) · Dupla ✅ (+R$3,22) · Bingo ❌ (-R$2) — P&L do dia: -R$0,78.", time:"13/03 21:00", unread:true },
   { type:"red", typeLabel:"RED ANTERIOR", msg:"R5 — Palmeiras DC perdeu: Vasco 2×1 Palmeiras. Bilhete RED.", time:"12/03 21:45", unread:false },
 ];
 
