@@ -274,7 +274,7 @@ tbody tr:hover{background:#0a1220}
       </div>
       <div id="topbar-right">
         <span id="comp-live-badge" class="badge-sm badge-orange live">● 14/03</span>
-        <span id="ts-display">12/03/2026 09:00</span>
+        <span id="ts-display">14/03/2026 09:00</span>
       </div>
     </div>
   </div>
@@ -301,7 +301,7 @@ tbody tr:hover{background:#0a1220}
   <div class="two-col">
     <div>
       <div class="card">
-        <div class="card-hd"><span class="card-title">BILHETE ATIVO</span><span id="ov-bil-badge" class="badge-sm badge-gold">● 13/03 ENCERRADO</span></div>
+        <div class="card-hd"><span class="card-title">BILHETE ATIVO</span><span id="ov-bil-badge" class="badge-sm badge-gold">● 14/03 EM ABERTO</span></div>
         <div id="ov-apostas"></div>
         <div style="padding:9px 16px;background:var(--bg4);display:flex;justify-content:space-between">
           <span style="font-size:9px;color:var(--text3)" id="ov-bil-info">—</span>
@@ -323,13 +323,13 @@ tbody tr:hover{background:#0a1220}
 <div id="sec-bilhete" class="page-section">
   <div class="bil-tipos">
     <button class="bil-tipo-btn single active" onclick="switchBilTipo('single')">
-      🎯 JOGO ÚNICO<div class="bil-tipo-label">ODD 1.80 → 2.20</div>
+      🎯 JOGO ÚNICO<div class="bil-tipo-label">ODD ~1.65</div>
     </button>
     <button class="bil-tipo-btn dupla" onclick="switchBilTipo('dupla')">
-      ⚡ DUPLA<div class="bil-tipo-label">ODD 2.50 → 3.80</div>
+      ⚡ DUPLA<div class="bil-tipo-label">ODD ~2.38</div>
     </button>
     <button class="bil-tipo-btn bingo" onclick="switchBilTipo('bingo')">
-      🎰 BINGO<div class="bil-tipo-label">ODD 20 → 40</div>
+      🎰 BINGO<div class="bil-tipo-label">ODD ~17×</div>
     </button>
   </div>
   <div class="bil-layout">
@@ -954,149 +954,169 @@ const oddOverrides = { single:{}, dupla:{}, bingo:{} };
 
 const BILHETE_DATA = {
 
+  // ── JOGO ÚNICO ──────────────────────────────────────────
   single:[
     {
-      jogo:"Alavés x Villarreal", comp:"esp", compLabel:"🇪🇸 ESP",
-      selecao:"Villarreal — Vence", mercado:"Resultado Final",
-      odd:2.15, conf:68, resultado:false, placar:"1×1", data:"13/03",
+      jogo:"Leverkusen x Bayern", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Bayern Munique — Vence", mercado:"Resultado Final",
+      odd:1.65, conf:72, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Villarreal em 4º (54pts) — 3 vitórias nos últimos 4 jogos na La Liga",
-          "Alavés em 16º lugar — 5 jogos seguidos sem vencer, em zona de rebaixamento",
-          "Último H2H (jan/26): Villarreal ganhou 3×1 na casa do Alavés",
-          "Ataque intacto: Mikautadze, Ayoze Pérez, Moleiro — média 1.85 gols/jogo"
+          "Bayern lidera a Bundesliga com 66pts — 11pts de vantagem sobre o 2º colocado",
+          "Invicto como visitante: 21 vitórias e 0 derrotas fora na Bundesliga 2025/26",
+          "92 gols marcados em 25 jogos — melhor ataque e melhor defesa do campeonato",
+          "Leverkusen com apenas 1 vitória nos últimos 5 jogos na Bundesliga",
+          "H2H recente: Bayern venceu 3×0 na última visita à BayArena (nov/25)",
+          "Grimaldo suspenso — Leverkusen perde principal criador pelo lado esquerdo"
         ],
         risco:[
-          "Villarreal tem só 1 vitória nos últimos 6 jogos fora de casa",
-          "Mendizorroza é difícil — Alavés pressionado pela torcida"
+          "Harry Kane com dores na panturrilha — pode não jogar",
+          "Leverkusen motivado após empate 1×1 com Arsenal na UCL — pode usar como impulso",
+          "Bayern com desfalques: Neuer, Musiala, Davies, Ito — elenco rotacionado"
         ],
-        mercados:["Resultado Final","Dupla Chance","Ambos Marcam","Over 2.5"]
+        mercados:["Resultado Final","Dupla Chance","Asian Handicap","Over 2.5"]
       }
     }
   ],
 
+  // ── DUPLA ───────────────────────────────────────────────
   dupla:[
     {
-      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
-      selecao:"Marseille — Vence", mercado:"Resultado Final",
-      odd:1.45, conf:80, resultado:true, placar:"1×0", data:"13/03",
+      jogo:"Leverkusen x Bayern", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Bayern Munique — Vence", mercado:"Resultado Final",
+      odd:1.65, conf:72, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Marseille invicto em casa sob Habib Beye — 3º lugar (46pts)",
-          "Auxerre: 0 gols marcados fora de casa em 2026 inteiro na Ligue 1",
-          "Sinayoko suspenso + Kiala fora — ataque do Auxerre sem os dois principais nomes",
-          "Como visitante nos últimos 10: 1V 4E 5D — marcou em só 3 jogos"
+          "Bayern invicto fora de casa na Bundesliga em toda a temporada (21V 0D)",
+          "Leverkusen em má fase doméstica — 1V nos últimos 5 na liga",
+          "Diferença de 22 pontos na tabela reforça a superioridade técnica"
         ],
-        risco:["Auxerre pode fechar o jogo e arrancar um 0×0"],
-        mercados:["Resultado Final","Handicap"]
+        risco:["Kane duvidoso — Nicolas Jackson como alternativa imediata"],
+        mercados:["Resultado Final","Dupla Chance","Over 2.5"]
       }
     },
     {
-      jogo:"Al-Qadsiah x Al-Ahli", comp:"sau", compLabel:"🇸🇦 SAU",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.80, conf:74, resultado:true, placar:"3×2", data:"13/03",
+      jogo:"Arsenal x Everton", comp:"epl", compLabel:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 EPL",
+      selecao:"Arsenal — Vence", mercado:"Resultado Final",
+      odd:1.44, conf:75, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Over 2.5 em 17 dos 25 jogos do Al-Qadsiah na liga (68%)",
-          "Al-Ahli: marcou em todos os últimos 6 jogos — Ivan Toney com 24 gols",
-          "Último H2H desta temporada: Al-Ahli venceu por 5×1 — padrão de jogo aberto",
-          "Ambos os times com médias acima de 2.2 gols/jogo — dois dos melhores ataques da liga"
+          "Arsenal líder da Premier League com 67pts — 3 vitórias seguidas na liga",
+          "Em casa no Emirates — domínio histórico sobre o Everton",
+          "Everton 8º lugar com 43pts — frágil fora de casa",
+          "Arsenal tem o melhor ataque da PL (59 gols, média 2.1/jogo)"
         ],
-        risco:["Jogo pelo topo — pode ser mais controlado taticamente"],
-        mercados:["Over 2.5","Ambos Marcam","Total de Gols"]
+        risco:[
+          "Jogo entre Leverkusen (UCL ida 1×1) — Arsenal pode poupar jogadores",
+          "Ødegaard e Trossard são dúvidas — Merino confirmado fora",
+          "Último H2H no Emirates: empate 0×0 (dez/24)"
+        ],
+        mercados:["Resultado Final","Dupla Chance","Over 2.5","Gyökeres marca"]
       }
     }
   ],
 
+  // ── BINGO ───────────────────────────────────────────────
   bingo:[
     {
-      jogo:"Karagumruk x Fenerbahçe", comp:"tur", compLabel:"🇹🇷 TUR",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.70, conf:78, resultado:false, placar:"2×0", data:"13/03",
+      jogo:"Leverkusen x Bayern", comp:"bun", compLabel:"🇩🇪 BUN",
+      selecao:"Bayern Munique — Vence", mercado:"Resultado Final",
+      odd:1.65, conf:72, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Fenerbahçe único invicto da liga — 16V 9E — 2º lugar a 4pts do líder",
-          "Karagumruk lanterna com a pior defesa (46 gols sofridos)",
-          "8 dos últimos 9 jogos do Fenerbahçe tiveram Over 2.5 gols",
-          "Todos os 5 últimos H2H entre as equipes tiveram Over 2.5"
+          "Bayern invicto fora em toda a Bundesliga (21V 0D)",
+          "Leverkusen 1V em 5 jogos domésticos — inconsistência grave na liga",
+          "92 gols em 25 jogos — ataque avassalador mesmo com rotações"
         ],
-        risco:["Fenerbahçe pode controlar o jogo e não arriscar"],
-        mercados:["Over 2.5","Fenerbahçe Vence","Total de Gols"]
+        risco:["Kane duvidoso — elenco rotacionado para UCL na terça"],
+        mercados:["Resultado Final","Asian Handicap"]
       }
     },
     {
-      jogo:"Al-Qadsiah x Al-Ahli", comp:"sau", compLabel:"🇸🇦 SAU",
-      selecao:"Over 2.5 Gols", mercado:"Total de Gols",
-      odd:1.80, conf:74, resultado:true, placar:"3×2", data:"13/03",
+      jogo:"Inter x Atalanta", comp:"ita", compLabel:"🇮🇹 ITA",
+      selecao:"Inter Milão — Vence", mercado:"Resultado Final",
+      odd:1.55, conf:70, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Over 2.5 em 17 dos 25 jogos do Al-Qadsiah nesta liga (68%)",
-          "Ambos os times com média acima de 2.2 gols/jogo",
-          "Último H2H: 5×1 para o Al-Ahli — padrão histórico de jogos abertos",
-          "Ivan Toney (24g) + Quiñones (24g) — duelo entre os melhores artilheiros da liga"
-        ],
-        risco:["Jogo pelo topo — pode ser mais controlado taticamente"],
-        mercados:["Over 2.5","Ambos Marcam"]
-      }
-    },
-    {
-      jogo:"Mönchengladbach x St. Pauli", comp:"bun", compLabel:"🇩🇪 BUN",
-      selecao:"Ambos Marcam — SIM", mercado:"Ambos Marcam",
-      odd:1.80, conf:62, resultado:false, placar:"2×0", data:"13/03",
-      analise:{
-        favoravel:[
-          "Gladbach marcou em 7 dos últimos 10 jogos em casa na Bundesliga",
-          "St. Pauli marcou em 7 dos últimos 10 jogos da temporada",
-          "Ambos precisam de pontos — jogo de sobrevivência que tende a ser aberto"
+          "Inter lidera a Serie A com 67pts — 7pts à frente do vice Milan",
+          "San Siro — forte mandante, com histórico positivo contra a Atalanta",
+          "Atalanta acabou de levar 6×1 do Bayern na UCL — abalo psicológico e físico",
+          "Atalanta em 7ª posição (46pts) — sem pressão de rebaixamento mas sem urgência"
         ],
         risco:[
-          "Gladbach em crise ofensiva severa — só 3 gols nos últimos 5 jogos",
-          "Jogo de 6 pontos pode travar os dois times defensivamente"
+          "Inter vem de derrota para o Milan (0×1) — sequência quebrada",
+          "Atalanta tem boas individualidades — Scamacca e Krstovic perigosos"
         ],
-        mercados:["Ambos Marcam","Over 1.5"]
+        mercados:["Resultado Final","Dupla Chance","Over 2.5"]
       }
     },
     {
-      jogo:"Torino x Parma", comp:"ita", compLabel:"🇮🇹 ITA",
-      selecao:"Torino — Vence", mercado:"Resultado Final",
-      odd:1.39, conf:78, resultado:true, placar:"4×1", data:"13/03",
+      jogo:"Arsenal x Everton", comp:"epl", compLabel:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 EPL",
+      selecao:"Arsenal — Vence", mercado:"Resultado Final",
+      odd:1.44, conf:75, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Torino forte mandante na Serie A 2025/26",
-          "Parma: pior visitante da Serie A — 5 derrotas nos últimos 7 fora",
-          "Parma em zona de rebaixamento (odd 6.60 para vencer) — vai se fechar",
-          "H2H: Torino venceu 3 dos últimos 4 duelos em Turim"
+          "Arsenal líder com 67pts — 3V seguidas na Premier League",
+          "Everton nunca venceu no Emirates ao longo de toda a história recente",
+          "Ataque do Arsenal: Gyökeres + Saka + Martinelli — combinação devastadora"
         ],
-        risco:["Torino pode poupar com calendário cheio"],
-        mercados:["Resultado Final","Dupla Chance","Over 1.5"]
+        risco:["Possível rotação entre Leverkusen (UCL) e esta partida"],
+        mercados:["Resultado Final","Over 2.5","Gyökeres marca"]
       }
     },
     {
-      jogo:"Marseille x Auxerre", comp:"fra", compLabel:"🇫🇷 FRA",
-      selecao:"Marseille — Vence", mercado:"Resultado Final",
-      odd:1.45, conf:80, resultado:true, placar:"1×0", data:"13/03",
+      jogo:"Real Madrid x Elche", comp:"esp", compLabel:"🇪🇸 ESP",
+      selecao:"Real Madrid — Vence", mercado:"Resultado Final",
+      odd:1.32, conf:85, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Marseille invicto em casa sob Beye — 3º lugar na Ligue 1",
-          "Auxerre: 0 gols fora em 2026 — menos produtivo da liga como visitante",
-          "Sinayoko suspenso + Kiala fora — Auxerre sem atacantes titulares"
+          "Real Madrid 2º na La Liga (63pts) — em casa no Santiago Bernabéu",
+          "Elche 17º (26pts) — sem vencer há 11 jogos (7D 4E neste período)",
+          "Elche nunca venceu fora de casa contra o Real Madrid na história",
+          "Real venceu 3×0 o Manchester City na UCL e chega com confiança máxima",
+          "Vinícius Júnior em campo — arma decisiva contra defesa frágil do Elche"
         ],
-        risco:["Auxerre pode conseguir empate defensivo 0×0"],
-        mercados:["Resultado Final","Handicap"]
+        risco:[
+          "Mbappé, Bellingham, Rodrygo, Militão, Mendy fora — muitos desfalques",
+          "Real pode poupar pensando na UCL (volta vs Man City)"
+        ],
+        mercados:["Resultado Final","Dupla Chance","Asian Handicap -1","Over 2.5"]
       }
     },
     {
-      jogo:"Alavés x Villarreal", comp:"esp", compLabel:"🇪🇸 ESP",
-      selecao:"Villarreal — Vence", mercado:"Resultado Final",
-      odd:2.15, conf:65, resultado:false, placar:"1×1", data:"13/03",
+      jogo:"West Ham x Manchester City", comp:"epl", compLabel:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 EPL",
+      selecao:"Manchester City — Vence", mercado:"Resultado Final",
+      odd:1.80, conf:65, resultado:null, placar:null, data:"14/03",
       analise:{
         favoravel:[
-          "Villarreal em 4º — 3V nos últimos 4 — brigando por UCL",
-          "Alavés 5 jogos sem vencer — zona de rebaixamento",
-          "Último H2H: Villarreal ganhou 3×1 na casa do Alavés"
+          "West Ham sem vencer contra o City desde 2016 — perdeu os últimos 5 sofrendo média 3.2 gols",
+          "City precisa da vitória para encurtar a diferença de 7pts para o Arsenal",
+          "West Ham 7V 7E 15D na temporada — fragilidade defensiva evidente",
+          "City marcou 3+ gols nos últimos 6 confrontos diretos com o West Ham"
         ],
-        risco:["Villarreal só 1V nos últimos 6 jogos fora — inconsistente como visitante"],
-        mercados:["Resultado Final","Dupla Chance"]
+        risco:[
+          "West Ham tem Jarrod Bowen em grande fase — ameaça real",
+          "City jogou pouco pelo BRA — mas tem ritmo de liga"
+        ],
+        mercados:["Resultado Final","Over 2.5","Ambos Marcam","Asian Handicap"]
+      }
+    },
+    {
+      jogo:"Botafogo x Flamengo", comp:"bra", compLabel:"🇧🇷 BRA",
+      selecao:"Ambos Marcam — SIM", mercado:"Ambos Marcam",
+      odd:1.75, conf:68, resultado:null, placar:null, data:"14/03",
+      analise:{
+        favoravel:[
+          "Clássico carioca — histórico de jogos abertos com gols dos dois lados",
+          "Flamengo tem boa fase ofensiva e não costuma fechar atrás em clássicos",
+          "Botafogo em casa no Nilton Santos — vai atacar perante torcida",
+          "Ambos os times entre os mais ofensivos do Brasileirão neste início de temporada"
+        ],
+        risco:[
+          "Clássicos podem ter muita tensão e poucas chances claras",
+          "Botafogo pode adotar postura mais conservadora dependendo do contexto"
+        ],
+        mercados:["Ambos Marcam","Over 2.5","Resultado Final"]
       }
     }
   ]
